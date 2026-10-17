@@ -54,6 +54,11 @@ jobs:
       - name: Собрать debug
         run: ./gradlew --no-daemon assembleDebug
 
+      - name: Проверить содержимое APK
+        run: |
+          chmod +x .github/scripts/inspect-apk.sh
+          .github/scripts/inspect-apk.sh $(ls app/build/outputs/apk/release/*.apk | head -1)
+
       - name: Проверить подпись постоянным ключом
         run: |
           chmod +x .github/scripts/verify-signature.sh
