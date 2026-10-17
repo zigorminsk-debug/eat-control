@@ -368,7 +368,7 @@ public class UpdateManager {
         return connection;
     }
 
-    private static String sha256(File file) throws IOException {
+    private static String sha256(File file) throws IOException, NoSuchAlgorithmException {
         if (file == null || !file.isFile()) return null;
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         InputStream in = new java.io.FileInputStream(file);
