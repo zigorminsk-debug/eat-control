@@ -158,6 +158,7 @@ public class UpdateManager {
     // Загрузка APK
     // ------------------------------------------------------------------
 
+    @SuppressLint("SetTextI18n")
     private void download(final Activity activity, final String url, final String sha256) {
         showProgress(activity, "Загрузка обновления…", 0);
         new Thread(new Runnable() {

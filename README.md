@@ -26,9 +26,12 @@ app/src/main/java/by/arena/fooddiary/
 ├── UpdateManager.java   # проверка обновления, скачивание APK, проверка SHA-256
 └── ApkProvider.java    # выдача скачанного APK системному установщику
 app/src/main/assets/help/gazy-i-vzdutie.html   # страница справки (оффлайн)
+app/src/main/res/xml/data_extraction_rules.xml # облачный бэкап и перенос данных запрещены
+app/src/test/java/by/arena/fooddiary/         # модульные тесты разбора манифеста обновления
 keystore/               # постоянный ключ подписи
 keystore.properties     # параметры ключа и его отпечаток
 .github/workflows/      # автосборка и публикация релизов
+.github/scripts/        # проверка подписи и содержимого APK
 docs/                   # страница справки и скриншот приложения
 ```
 
@@ -71,15 +74,23 @@ docs/                   # страница справки и скриншот п
 ```bash
 ./gradlew assembleDebug    # отладочная сборка, пакет by.arena.fooddiary.debug
 ./gradlew assembleRelease  # релизная сборка, пакет by.arena.fooddiary
+./gradlew test             # модульные тесты (разбор манифеста обновления)
 ```
 
 Готовый APK: `app/build/outputs/apk/release/food-diary-1.1.0.apk`
+
+Проверка целостности сборки (используется и в CI):
+
+```bash
+.github/scripts/verify-signature.sh app/build/outputs/apk/release/food-diary-1.1.0.apk
+.github/scripts/inspect-apk.sh      app/build/outputs/apk/release/food-diary-1.1.0.apk
+```
 
 ## Автосборка и автообновление (GitHub Actions)
 
 | Workflow | Когда запускается | Что делает |
 |---|---|---|
-| `.github/workflows/build.yml` | push в `main`/`arena/**`, pull request, ручной запуск | собирает release и debug APK, проверяет подпись постоянным ключом, сохраняет артефакты |
+| `.github/workflows/build.yml` | push в `main`/`arena/**`, pull request, ручной запуск | собирает release и debug APK, гоняет модульные тесты, проверяет подпись постоянным ключом и содержимое APK, сохраняет артефакты |
 | `.github/workflows/release.yml` | тег `v*` или ручной запуск с версией | собирает подписанный APK, публикует релиз на GitHub и файл `update.json` |
 
 `update.json` — манифест, который читает приложение:
