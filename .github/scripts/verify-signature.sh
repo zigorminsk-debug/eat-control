@@ -17,7 +17,8 @@ if [ ! -x "$APKSIGNER" ]; then
   exit 1
 fi
 
-EXPECTED="$(grep -oP '^sha256=\K.*' "$ROOT/keystore.properties" | tr -d ' \r' | tr '[:lower:]' '[:upper:]')"
+# Приводим отпечаток к единому виду: только заглавные hex-символы без двоеточий.
+EXPECTED="$(grep -oP '^sha256=\K.*' "$ROOT/keystore.properties" | tr -d ' \r' | tr -d ':' | tr '[:lower:]' '[:upper:]')"
 if [ -z "$EXPECTED" ]; then
   echo "::error::в keystore.properties нет поля sha256"
   exit 1
@@ -27,7 +28,7 @@ echo "--- apksigner verify --print-certs ---"
 "$APKSIGNER" verify --print-certs "$APK"
 
 ACTUAL="$("$APKSIGNER" verify --print-certs "$APK" \
-  | grep -i "SHA-256 digest" | head -1 | awk '{print $NF}' | tr -d ' \r' | tr '[:lower:]' '[:upper:]')"
+  | grep -i "SHA-256 digest" | head -1 | awk '{print $NF}' | tr -d ' \r' | tr -d ':' | tr '[:lower:]' '[:upper:]')"
 
 if [ -z "$ACTUAL" ]; then
   echo "::error::не удалось получить отпечаток сертификата"
@@ -40,6 +41,7 @@ if [ "$ACTUAL" != "$EXPECTED" ]; then
   echo "  получено:  $ACTUAL"
   exit 1
 fi
+echo "::notice::отпечаток сертификата совпал: $ACTUAL"
 
 # Схемы подписи: v2 обязателен для targetSdk 30+, v3 — для обновлений поверх.
 SCHEMES="$("$APKSIGNER" verify -v "$APK" 2>/dev/null | grep -iE "Verified using v[0-9] scheme" || true)"
