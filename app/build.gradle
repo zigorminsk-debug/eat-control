@@ -92,6 +92,10 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     packaging {
         resources {
             excludes += ['META-INF/*.kotlin_module', 'DebugProbesKt.bin']
@@ -110,4 +114,11 @@ android {
             outputFileName = "food-diary-${variant.versionName}.apk"
         }
     }
+}
+
+dependencies {
+    // Модульные тесты разбора манифеста обновления (обычная JVM, без Android).
+    testImplementation 'junit:junit:4.13.2'
+    // Настоящая реализация org.json вместо заглушки android.jar.
+    testImplementation 'org.json:json:20231013'
 }

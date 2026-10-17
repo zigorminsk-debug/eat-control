@@ -54,6 +54,9 @@ jobs:
       - name: Собрать debug
         run: ./gradlew --no-daemon assembleDebug
 
+      - name: Модульные тесты
+        run: ./gradlew --no-daemon test
+
       - name: Проверить содержимое APK
         run: |
           chmod +x .github/scripts/inspect-apk.sh

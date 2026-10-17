@@ -22,8 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -106,7 +104,7 @@ public class UpdateManager {
                             return;
                         }
                         try {
-                            handleManifest(activity, new JSONObject(body), interactive);
+                            handleManifest(activity, UpdateInfo.parse(body), interactive);
                         } catch (Exception e) {
                             if (interactive) toast(activity, "Не удалось разобрать ответ сервера");
                         }
@@ -116,26 +114,18 @@ public class UpdateManager {
         }).start();
     }
 
-    private void handleManifest(Activity activity, JSONObject info, boolean interactive) {
-        int remoteCode = info.optInt("version_code", 0);
-        String remoteName = info.optString("version_name", "");
-        String url = info.optString("url", "");
-        String sha256 = info.optString("sha256", "");
-
-        if (remoteCode <= BuildConfig.VERSION_CODE) {
+    private void handleManifest(Activity activity, UpdateInfo info, boolean interactive) {
+        if (!info.isNewerThan(BuildConfig.VERSION_CODE)) {
             if (interactive) {
                 toast(activity, "Установлена последняя версия (" + BuildConfig.VERSION_NAME + ")");
             }
             return;
         }
-        if (TextUtils.isEmpty(url)) {
-            if (interactive) toast(activity, "В манифесте нет ссылки на файл обновления");
-            return;
-        }
 
-        final String notes = info.optString("notes", "");
-        final String downloadUrl = url;
-        final String checksum = sha256;
+        final String notes = info.notes;
+        final String downloadUrl = info.url;
+        final String checksum = info.sha256;
+        final String remoteName = info.describe();
 
         LinearLayout box = new LinearLayout(activity);
         box.setOrientation(LinearLayout.VERTICAL);
@@ -145,7 +135,7 @@ public class UpdateManager {
         box.addView(title);
         TextView version = text(activity,
                 "Установлена версия " + BuildConfig.VERSION_NAME
-                        + " → будет установлена " + (remoteName.isEmpty() ? String.valueOf(remoteCode) : remoteName),
+                        + " → будет установлена " + remoteName,
                 13, GREEN_DARK, false);
         box.addView(version);
         if (!notes.isEmpty()) {

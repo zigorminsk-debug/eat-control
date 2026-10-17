@@ -32,6 +32,16 @@ if ! unzip -l "$APK" | grep -q "classes.dex"; then
   exit 1
 fi
 
+# Русские строки должны сохраниться без искажений (проверка кодировки сборки).
+if ! unzip -p "$APK" classes.dex | grep -qa "Еда и самочувствие"; then
+  echo "::error::русские строки в classes.dex искажены — проблема с кодировкой сборки"
+  exit 1
+fi
+if ! unzip -p "$APK" resources.arsc | grep -qa "Еда и самочувствие"; then
+  echo "::error::русские строки в resources.arsc искажены — проблема с кодировкой сборки"
+  exit 1
+fi
+
 if [ -x "$APKSIGNER" ]; then
   echo "--- схемы подписи ---"
   "$APKSIGNER" verify -v "$APK" | grep -E "Verified using|Number of signers" || true
