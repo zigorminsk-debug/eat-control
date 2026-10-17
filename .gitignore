@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+app/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Кэш Android SDK (не должен попадать в репозиторий)
+.android/
+captures/
+
+# Сборочные артефакты
+*.apk
+*.aab
+*.keystore.bak
+
+# ВАЖНО: keystore/ и keystore.properties намеренно НЕ игнорируются.
+# Постоянный ключ подписи лежит в репозитории, иначе GitHub Actions не сможет
+# подписать сборку тем же ключом, и обновление поверх приложения не установится.

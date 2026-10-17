@@ -1,0 +1,110 @@
+plugins {
+    id 'com.android.application'
+}
+
+// ---------------------------------------------------------------------------
+// Постоянный ключ подписи.
+// Значения читаются из keystore.properties, но любой из них можно переопределить
+// переменной окружения (так сделано в GitHub Actions, если ключ хранится в Secrets).
+// ---------------------------------------------------------------------------
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+
+def resolveKey = { String prop, String env ->
+    String fromEnv = System.getenv(env)
+    if (fromEnv != null && !fromEnv.trim().isEmpty()) return fromEnv.trim()
+    String fromFile = keystoreProperties.getProperty(prop)
+    return fromFile == null ? null : fromFile.trim()
+}
+
+def releaseStoreFile = resolveKey('storeFile', 'KEYSTORE_FILE')
+def releaseStorePassword = resolveKey('storePassword', 'KEYSTORE_PASSWORD')
+def releaseKeyAlias = resolveKey('keyAlias', 'KEY_ALIAS')
+def releaseKeyPassword = resolveKey('keyPassword', 'KEY_PASSWORD')
+def hasReleaseKey = releaseStoreFile != null && releaseStorePassword != null
+        && releaseKeyAlias != null && releaseKeyPassword != null
+
+android {
+    namespace 'by.arena.fooddiary'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        applicationId 'by.arena.fooddiary'
+        minSdk 23
+        targetSdk 34
+        versionCode 3
+        versionName '1.1.0'
+        resourceConfigurations += ['ru']
+    }
+
+    buildFeatures {
+        // BuildConfig нужен для проверки версии при автообновлении.
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        release {
+            if (hasReleaseKey) {
+                storeFile rootProject.file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+            // Поддержка всех схем подписи: v1 — для старых устройств (API 23+),
+            // v2/v3 — обязательны для Android 11+ (targetSdk 30+).
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+        release {
+            // Релиз подписывается постоянным ключом из keystore.properties.
+            // Если ключ не найден, сборка падает с понятной ошибкой, а НЕ
+            // подписывается отладочным ключом: иначе обновление поверх
+            // установленного приложения было бы невозможно.
+            if (hasReleaseKey) {
+                signingConfig signingConfigs.release
+            } else {
+                logger.warn('WARNING: постоянный ключ подписи не найден ' +
+                        '(keystore.properties / KEYSTORE_*). Release-сборка не будет подписана.')
+            }
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/*.kotlin_module', 'DebugProbesKt.bin']
+        }
+    }
+
+    lint {
+        // Линт не должен ронять релизную сборку, но его отчёт печатается в лог CI.
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    // Понятное имя файла: food-diary-1.1.0.apk
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "food-diary-${variant.versionName}.apk"
+        }
+    }
+}

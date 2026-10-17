@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Понятный разбор причин газообразования, отрыжки и вздутия, обследования и методов лечения по рекомендациям гастроэнтерологических обществ.">
+  <meta name="theme-color" content="#173a3b">
+  <title>Газы и вздутие: причины, обследование и лечение</title>
+  <style>
+    :root {
+      --ink: #183337;
+      --muted: #5e7071;
+      --paper: #f5f6f2;
+      --surface: #ffffff;
+      --line: #dce5e0;
+      --green: #17665b;
+      --green-dark: #123f3d;
+      --green-soft: #e9f3ef;
+      --gold: #e5bd70;
+      --gold-soft: #fbf4e5;
+      --red: #a7423d;
+      --red-soft: #fff0ed;
+      --shadow: 0 14px 40px rgba(24, 51, 55, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 18px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-underline-offset: 3px; }
+    a:hover { color: #0d4a42; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #dda949; outline-offset: 3px; border-radius: 4px; }
+    p { margin: 0 0 14px; }
+    h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -.025em; }
+    h1, h2, h3 { margin: 0; }
+    h2 { font-size: clamp(1.65rem, 3vw, 2.35rem); }
+    h3 { font-size: 1.12rem; }
+    ul, ol { margin: 10px 0 0; padding-left: 1.25rem; }
+    li { padding-left: 3px; margin: 0 0 7px; }
+    strong { font-weight: 720; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topline { background: #f5f6f2; }
+    .topbar { min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .82rem; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 760; text-decoration: none; letter-spacing: -.02em; }
+    .brand-mark { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--green-dark); color: #fff; font-size: .9rem; }
+    .top-meta { display: flex; align-items: center; gap: 9px; }
+    .dot { width: 5px; height: 5px; display: inline-block; border-radius: 50%; background: var(--gold); }
+    .hero-shell { background: #f5f6f2; padding-bottom: 28px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+      gap: clamp(30px, 6vw, 74px);
+      align-items: center;
+      min-height: 435px;
+      padding: clamp(34px, 6vw, 68px);
+      border-radius: 30px;
+      color: #f6faf7;
+      background:
+        radial-gradient(circle at 79% 4%, rgba(229,189,112,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 92% 55%, rgba(229,189,112,.14) 0 100px, transparent 102px),
+        linear-gradient(132deg, #123e3d 0%, #1a5550 55%, #1d6255 100%);
+      box-shadow: 0 22px 50px rgba(18,63,61,.14);
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; pointer-events: none; }
+    .hero::before { width: 360px; height: 360px; right: -120px; top: -180px; }
+    .hero::after { width: 250px; height: 250px; right: -54px; top: -126px; }
+    .hero-main, .hero-side { position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 16px; color: #d4e4dc; font-size: .75rem; font-weight: 760; letter-spacing: .13em; text-transform: uppercase; }
+    .hero h1 { max-width: 720px; font-size: clamp(2.4rem, 5vw, 4.25rem); line-height: 1.05; letter-spacing: -.055em; }
+    .hero h1 span { color: #e8c77f; }
+    .hero-lead { max-width: 670px; margin: 22px 0 25px; color: rgba(246,250,247,.82); font-size: 1.07rem; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 11px; color: #f5faf7; font-size: .78rem; }
+    .pill-mark { color: var(--gold); font-weight: 900; }
+    .hero-button { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 11px; background: #f6e8c7; color: #243d37; font-weight: 730; text-decoration: none; font-size: .9rem; transition: transform .18s ease, background .18s ease; }
+    .hero-button:hover { color: #243d37; background: #f0d99f; transform: translateY(-1px); }
+    .hero-button .arrow { font-size: 1.15rem; line-height: 1; }
+    .keybox { background: #f7f4eb; color: var(--ink); padding: 23px; border-radius: 20px; box-shadow: 0 18px 38px rgba(7,35,33,.16); }
+    .keybox-label { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--green); font-size: .75rem; font-weight: 780; letter-spacing: .08em; text-transform: uppercase; }
+    .keybox h2 { font-size: 1.25rem; margin-bottom: 9px; }
+    .keybox p { color: #536766; font-size: .91rem; margin-bottom: 18px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 15px; border-top: 1px solid #dedfd5; }
+    .stat { padding: 5px 4px; }
+    .stat strong { display: block; color: var(--green-dark); font-size: 1.4rem; letter-spacing: -.04em; }
+    .stat span { display: block; color: #687777; font-size: .75rem; line-height: 1.35; }
+    .keybox .fine { display: block; margin-top: 12px; color: #738080; font-size: .71rem; line-height: 1.45; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px auto 0; padding: 11px; border: 1px solid #e1e7e2; border-radius: 16px; background: rgba(255,255,255,.72); }
+    .toc a { padding: 7px 11px; border-radius: 9px; color: #425c5b; font-size: .83rem; font-weight: 650; text-decoration: none; }
+    .toc a:hover { background: var(--green-soft); color: var(--green-dark); }
+    main { padding: 8px 0 60px; }
+    section { margin: 50px 0; scroll-margin-top: 18px; }
+    .section-head { max-width: 780px; margin-bottom: 23px; }
+    .section-no { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--green); font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .section-no::before { content: ""; width: 22px; height: 2px; background: var(--gold); }
+    .section-desc { max-width: 760px; margin-top: 11px; color: var(--muted); font-size: 1rem; }
+    .takeaway { display: grid; grid-template-columns: 46px 1fr; gap: 17px; align-items: start; padding: 22px 25px; border: 1px solid #dce9e3; border-radius: var(--radius); background: linear-gradient(112deg, #e8f3ee, #f8faf6); }
+    .takeaway-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: var(--green); color: white; font-size: 1.2rem; font-weight: 800; }
+    .takeaway p { margin: 0; color: #375452; }
+    .takeaway strong { color: #173f3b; }
+    .cite { color: var(--green); font-size: .75em; font-weight: 800; text-decoration: none; vertical-align: super; margin-left: 1px; }
+    .cite:hover { text-decoration: underline; }
+    .grid-4, .grid-3, .grid-2 { display: grid; gap: 14px; }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { padding: 21px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 5px 16px rgba(24,51,55,.025); }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .card h3 { margin-bottom: 8px; }
+    .card p, .card li { color: var(--muted); font-size: .92rem; }
+    .card li { margin-bottom: 5px; }
+    .card-index { width: 34px; height: 34px; display: grid; place-items: center; margin-bottom: 13px; border-radius: 11px; background: var(--green-soft); color: var(--green); font-size: .88rem; font-weight: 800; }
+    .symptom-card { min-height: 180px; }
+    .symptom-card h3 { font-size: 1.02rem; }
+    .symptom-card .small-label { display: block; margin-top: 13px; color: #758481; font-size: .75rem; }
+    .callout { margin-top: 16px; padding: 16px 19px; border-left: 3px solid var(--gold); border-radius: 0 13px 13px 0; background: var(--gold-soft); color: #5b553f; font-size: .92rem; }
+    .cause-card { position: relative; overflow: hidden; min-height: 220px; }
+    .cause-card::after { content: ""; position: absolute; right: -26px; bottom: -44px; width: 110px; height: 110px; border: 1px solid #e8efeb; border-radius: 50%; pointer-events: none; }
+    .cause-card h3 { max-width: 85%; }
+    .cause-card p { position: relative; z-index: 1; }
+    .tag { display: inline-block; margin: 0 0 11px; padding: 4px 8px; border-radius: 999px; background: #f1f5f2; color: #50716a; font-size: .68rem; font-weight: 760; letter-spacing: .03em; }
+    .tag.gold { background: #fbf1d9; color: #7f642b; }
+    .tag.red { background: #fff0ed; color: #984841; }
+    .panel { padding: clamp(20px, 3vw, 30px); border: 1px solid var(--line); border-radius: 26px; background: var(--surface); box-shadow: var(--shadow); }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 20px; border-radius: 18px; background: #f7f9f6; border: 1px solid #e4ebe6; counter-increment: step; }
+    .step::before { content: counter(step, decimal-leading-zero); display: inline-grid; place-items: center; width: 33px; height: 33px; margin-bottom: 13px; border-radius: 10px; background: var(--green-dark); color: white; font-size: .74rem; font-weight: 800; }
+    .step h3 { margin-bottom: 7px; }
+    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .test-list { margin-top: 18px; display: grid; gap: 10px; }
+    .test-row { display: grid; grid-template-columns: minmax(150px, .32fr) 1fr; gap: 17px; padding: 15px 17px; border: 1px solid #e3eae5; border-radius: 14px; background: #fff; }
+    .test-row strong { color: #224744; font-size: .9rem; }
+    .test-row p { margin: 0; color: var(--muted); font-size: .89rem; }
+    .notice { padding: 17px 20px; margin-top: 16px; border-radius: 14px; font-size: .9rem; }
+    .notice.warning { border: 1px solid #eddbb2; background: var(--gold-soft); color: #635536; }
+    .notice.info { border: 1px solid #d5e6df; background: var(--green-soft); color: #315651; }
+    .notice.danger { border: 1px solid #f1d2cc; background: var(--red-soft); color: #6c3834; }
+    .notice p:last-child { margin-bottom: 0; }
+    .treatment-intro { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-bottom: 18px; padding: 21px 24px; border-radius: 19px; background: var(--green-dark); color: #eef7f2; }
+    .treatment-intro p { margin: 0; color: #d4e4dc; }
+    .treatment-intro strong { color: #f0d28e; }
+    .evidence-stamp { white-space: nowrap; padding: 7px 10px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: #eaf4ee; font-size: .74rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 7px 22px rgba(24,51,55,.04); }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; text-align: left; }
+    thead { background: #edf4f0; }
+    th { padding: 13px 15px; color: #355551; font-size: .76rem; letter-spacing: .045em; text-transform: uppercase; }
+    td { padding: 14px 15px; border-top: 1px solid #e9efeb; vertical-align: top; color: #5b6c6c; font-size: .86rem; }
+    td:first-child { min-width: 170px; color: var(--ink); font-weight: 740; }
+    td:last-child { min-width: 180px; }
+    .evidence { display: inline-block; border-radius: 999px; padding: 4px 8px; background: #eef4ef; color: #3f6d5f; font-size: .68rem; font-weight: 780; line-height: 1.3; }
+    .evidence.limited { background: #fbf2df; color: #7b632d; }
+    .evidence.avoid { background: #fff0ed; color: #984841; }
+    .table-note { margin: 10px 2px 0; color: #6a7978; font-size: .78rem; }
+    .two-col-note { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 17px; }
+    .mini-panel { padding: 19px; border-radius: 17px; border: 1px solid var(--line); background: #fff; }
+    .mini-panel h3 { margin-bottom: 8px; }
+    .mini-panel p, .mini-panel li { color: var(--muted); font-size: .89rem; }
+    .myth-list { display: grid; gap: 9px; }
+    .myth { display: grid; grid-template-columns: 23px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border: 1px solid #e5ebe7; border-radius: 13px; background: #fff; color: #586a69; font-size: .9rem; }
+    .myth-mark { color: var(--red); font-weight: 900; }
+    .warning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .warning-card { padding: 23px; border-radius: 20px; }
+    .warning-card h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
+    .warning-card ul { margin-top: 8px; }
+    .warning-card li { font-size: .91rem; }
+    .warning-card.urgent { border: 1px solid #efc9c3; background: var(--red-soft); color: #703e39; }
+    .warning-card.soon { border: 1px solid #eadbb7; background: #fff9eb; color: #62563a; }
+    .warning-card p { margin-bottom: 7px; font-size: .9rem; }
+    .route { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .route-item { padding: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .route-day { margin-bottom: 9px; color: var(--green); font-size: .72rem; font-weight: 820; letter-spacing: .08em; text-transform: uppercase; }
+    .route-item p { margin: 0; color: var(--muted); font-size: .87rem; }
+    .faq { display: grid; gap: 9px; }
+    details { padding: 15px 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    summary { position: relative; cursor: pointer; color: #284744; font-weight: 720; list-style: none; padding-right: 28px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 1px; top: -3px; color: var(--green); font-size: 1.3rem; font-weight: 500; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 12px 0 0; color: var(--muted); font-size: .91rem; }
+    .sources { padding: clamp(21px, 3vw, 30px); border-radius: 24px; background: #eaf0eb; }
+    .sources ol { margin-top: 17px; padding-left: 1.45rem; }
+    .sources li { padding-left: 5px; margin-bottom: 12px; color: #5d706e; font-size: .83rem; }
+    .sources li::marker { color: var(--green); font-weight: 800; }
+    .sources a { font-weight: 650; }
+    .source-title { color: #314c48; font-weight: 750; }
+    .source-meta { display: block; margin-top: 2px; font-size: .76rem; color: #71807c; }
+    .footer { padding: 0 0 38px; color: #6e7d7b; font-size: .8rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-top: 21px; border-top: 1px solid #dce5e0; }
+    .footer p { margin: 0; max-width: 800px; }
+    .backtop { white-space: nowrap; font-weight: 700; text-decoration: none; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 26px; }
+      .hero-side { max-width: 520px; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .route { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .topbar { min-height: 52px; font-size: .72rem; }
+      .top-meta { gap: 6px; }
+      .hero { min-height: auto; padding: 29px 23px; border-radius: 22px; }
+      .hero h1 { font-size: clamp(2.25rem, 12vw, 3.2rem); }
+      .hero-lead { font-size: .98rem; }
+      .keybox { padding: 19px; }
+      .toc { gap: 3px; padding: 7px; }
+      .toc a { padding: 7px 8px; font-size: .75rem; }
+      section { margin: 39px 0; }
+      .grid-4, .grid-3, .grid-2, .steps, .warning-grid, .two-col-note { grid-template-columns: 1fr; }
+      .symptom-card { min-height: auto; }
+      .cause-card { min-height: auto; }
+      .test-row { grid-template-columns: 1fr; gap: 4px; }
+      .treatment-intro { grid-template-columns: 1fr; }
+      .evidence-stamp { justify-self: start; }
+      .route { grid-template-columns: 1fr 1fr; }
+      .takeaway { grid-template-columns: 36px 1fr; gap: 11px; padding: 17px; }
+      .takeaway-icon { width: 36px; height: 36px; border-radius: 11px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .topbar { align-items: flex-start; padding: 10px 0; }
+      .top-meta { text-align: right; display: block; }
+      .route { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      .hero-shell { padding: 0; }
+      .hero { box-shadow: none; min-height: 0; }
+      .toc, .hero-button, .backtop { display: none; }
+      section { margin: 28px 0; break-inside: avoid; }
+      .card, .panel, .table-wrap { box-shadow: none; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="topline">
+    <div class="wrap topbar">
+      <a class="brand" href="#top" aria-label="К началу страницы"><span class="brand-mark">Ж</span><span>Разбор здоровья</span></a>
+      <div class="top-meta"><span>Памятка для взрослых</span><span class="dot" aria-hidden="true"></span><span>Обновлено 17 октября 2026</span></div>
+    </div>
+  </div>
+
+  <div class="hero-shell">
+    <header class="wrap hero">
+      <div class="hero-main">
+        <p class="eyebrow">ЖКТ · доказательный разбор</p>
+        <h1>Газы и вздутие:<br><span>что за этим стоит</span></h1>
+        <p class="hero-lead">Разбираемся, почему возникает газообразование, когда дело не в «лишнем газе», какие обследования имеют смысл и что действительно может помочь.</p>
+        <div class="hero-pills" aria-label="Ключевые темы">
+          <span class="pill"><span class="pill-mark">✓</span> причины</span>
+          <span class="pill"><span class="pill-mark">✓</span> диагностика</span>
+          <span class="pill"><span class="pill-mark">✓</span> лечение</span>
+        </div>
+        <a class="hero-button" href="#route">Перейти к плану действий <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <aside class="hero-side" aria-label="Главная мысль">
+        <div class="keybox">
+          <div class="keybox-label"><span aria-hidden="true">●</span> Главная мысль</div>
+          <h2>Сильное вздутие не всегда означает избыток газа</h2>
+          <p>На ощущения влияют ферментация пищи, скорость кишечного транзита, запор и чувствительность кишечника. Поэтому лечение выбирают по причине, а не по одному симптому.</p>
+          <div class="stats">
+            <div class="stat"><strong>8–14</strong><span>отхождений газа в сутки — среднее в исследованиях</span></div>
+            <div class="stat"><strong>до 25</strong><span>в сутки может укладываться в обычный диапазон</span></div>
+          </div>
+          <small class="fine">Это ориентиры, а не диагностический тест: важнее дискомфорт, изменение привычного состояния и сопутствующие симптомы.<a class="cite" href="#src-1">[1]</a></small>
+        </div>
+      </aside>
+    </header>
+    <nav class="wrap toc" aria-label="Содержание страницы">
+      <a href="#different">Что именно беспокоит</a>
+      <a href="#causes">Причины</a>
+      <a href="#diagnosis">Обследование</a>
+      <a href="#treatment">Лечение</a>
+      <a href="#redflags">Когда к врачу</a>
+      <a href="#sources">Источники</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section aria-labelledby="start-title">
+      <div class="takeaway">
+        <div class="takeaway-icon" aria-hidden="true">i</div>
+        <p id="start-title"><strong>Короткий ответ.</strong> Газ в кишечнике — обычный результат заглатывания воздуха и ферментации части углеводов бактериями толстой кишки. Часто симптомы усиливают определённые продукты, запор или синдром раздражённого кишечника (СРК). Иногда причина — непереносимость лактозы или другое заболевание. По одному только вздутию диагноз не поставить.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a></p>
+      </div>
+    </section>
+
+    <section id="different" aria-labelledby="different-title">
+      <div class="section-head">
+        <div class="section-no">01 · Уточним симптом</div>
+        <h2 id="different-title">«Газы» — это несколько разных ощущений</h2>
+        <p class="section-desc">Разделение важно: отрыжка чаще связана с воздухом в верхних отделах, а вздутие может быть следствием чувствительности или запора, даже если объём газа не увеличен.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card symptom-card">
+          <div class="card-index">A</div>
+          <h3>Отрыжка</h3>
+          <p>Выход воздуха через рот. Часто усиливается при быстром приёме пищи, газировке, жевательной резинке или привычке заглатывать воздух.</p>
+          <span class="small-label">Не равна кишечному метеоризму</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">B</div>
+          <h3>Вздутие</h3>
+          <p>Субъективное чувство распирания, давления или полноты в животе. Может возникать без заметного увеличения живота.</p>
+          <span class="small-label">Ощущение — не измерение газа</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">C</div>
+          <h3>Видимое увеличение живота</h3>
+          <p>Объективное изменение окружности живота (дистензия). У части людей с чувством вздутия живот визуально не увеличивается.</p>
+          <span class="small-label">Вздутие и дистензия — не одно и то же</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">D</div>
+          <h3>Отхождение газов</h3>
+          <p>Газ выходит через прямую кишку. Его количество меняется в зависимости от питания, моторики кишечника и индивидуальной чувствительности.</p>
+          <span class="small-label">Один только подсчёт не диагностирует болезнь</span>
+        </article>
+      </div>
+      <div class="callout">Запах тоже не показывает «степень интоксикации»: он может зависеть от небольшого количества серосодержащих соединений в газе. Если кроме запаха ничего не изменилось, сам по себе этот признак не устанавливает диагноз.<a class="cite" href="#src-1">[1]</a></div>
+    </section>
+
+    <section id="causes" aria-labelledby="causes-title">
+      <div class="section-head">
+        <div class="section-no">02 · Возможные механизмы</div>
+        <h2 id="causes-title">Почему становится больше газа — или сильнее ощущается вздутие</h2>
+        <p class="section-desc">Причины могут сочетаться. Часто встречаются физиологическая ферментация, особенности еды и запор; реже требуется искать нарушение всасывания или структурное заболевание.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card cause-card">
+          <span class="tag">Часто · физиология</span>
+          <h3>1. Ферментация углеводов</h3>
+          <p>Часть сахаров, крахмала и клетчатки не полностью переваривается в тонкой кишке. Бактерии толстой кишки расщепляют её и образуют газ. Возможные пищевые триггеры: бобовые, некоторые виды капусты, лук, отдельные фрукты и соки, молочные продукты при непереносимости лактозы, продукты с сорбитом, маннитом или ксилитом.</p>
+          <a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-2">[2]</a>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Чаще отрыжка</span>
+          <h3>2. Заглатывание воздуха</h3>
+          <p>Быстрая еда, разговоры во время еды, газированные напитки, трубочка, жвачка и леденцы могут увеличивать количество проглоченного воздуха. При частой повторной отрыжке иногда возникает супрагастральная отрыжка — особый паттерн движения воздуха; для неё могут помогать дыхательные и поведенческие техники, а не антибиотики.</p>
+          <a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Часто недооценивают</span>
+          <h3>3. Запор и трудное опорожнение</h3>
+          <p>Редкий или твёрдый стул, натуживание и ощущение неполного опорожнения могут затруднять продвижение и выход газа. Если проблема именно в координации мышц тазового дна, простое добавление клетчатки не всегда решает её.</p>
+          <a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-9">[9]</a>
+        </article>
+        <article class="card cause-card">
+          <span class="tag gold">Вздутие без «лишнего газа»</span>
+          <h3>4. СРК и повышенная чувствительность</h3>
+          <p>При расстройствах взаимодействия «кишечник—мозг» кишечник может сильнее реагировать на обычное растяжение. Вздутие реально, но не обязательно означает, что образовалось необычно много газа. У некоторых людей заметное выпячивание живота связано с нарушением согласованной работы диафрагмы и брюшной стенки.</p>
+          <a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-4">[4]</a>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Проверять по симптомам</span>
+          <h3>5. Непереносимость или мальабсорбция</h3>
+          <p>Лактоза, фруктоза и целиакия могут вызывать газ, боль и изменение стула у части людей. Подозрение повышают повторяемая связь с конкретной едой, длительная диарея, потеря веса или дефицит железа. Целиакия — не то же самое, что реакция на глютен по ощущениям.</p>
+          <a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-6">[6]</a><a class="cite" href="#src-7">[7]</a>
+        </article>
+        <article class="card cause-card">
+          <span class="tag red">Реже · нужна оценка врача</span>
+          <h3>6. СИБР и другие заболевания</h3>
+          <p>СИБР — избыточный рост бактерий в тонкой кишке — чаще рассматривают при предрасполагающих факторах: некоторых операциях на ЖКТ, выраженном нарушении моторики или застое содержимого. Также похожие симптомы бывают при воспалительных болезнях и нарушении переваривания. Один симптом «газы» не подтверждает СИБР.</p>
+          <a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-8">[8]</a>
+        </article>
+      </div>
+      <div class="notice info"><strong>Лекарства и добавки тоже стоит обсудить.</strong> Если симптомы начались после нового препарата, слабительного, пищевой добавки или резкого увеличения клетчатки, запишите это и сообщите врачу. Не отменяйте назначенное лечение самостоятельно.<a class="cite" href="#src-1">[1]</a></div>
+    </section>
+
+    <section id="diagnosis" aria-labelledby="diagnosis-title">
+      <div class="section-head">
+        <div class="section-no">03 · Разумное обследование</div>
+        <h2 id="diagnosis-title">Сначала — история симптомов, затем только нужные тесты</h2>
+        <p class="section-desc">При типичной картине врач часто начинает с беседы и осмотра. Исследования подбирают под сопутствующие признаки, а не назначают один и тот же набор всем подряд.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a></p>
+      </div>
+      <div class="panel">
+        <div class="steps">
+          <article class="step">
+            <h3>Развести симптомы</h3>
+            <p>Что преобладает — отрыжка, чувство распирания, видимое увеличение живота или отхождение газов? Когда началось, связано ли с едой и дефекацией, какой стул, есть ли боль, диарея или запор?</p>
+          </article>
+          <article class="step">
+            <h3>Посмотреть на контекст</h3>
+            <p>Врач уточняет питание, лекарства, перенесённые операции, хронические болезни, изменение веса и семейный анамнез; затем проводит осмотр. Дневник питания и симптомов часто помогает увидеть закономерность.</p>
+          </article>
+          <article class="step">
+            <h3>Назначать тест по гипотезе</h3>
+            <p>Например, проверить целиакию при соответствующих симптомах, уточнить непереносимость лактозы или оценить воспаление при диарее. Рутинные обследования без клинической причины могут не помочь.</p>
+          </article>
+        </div>
+        <div class="test-list" aria-label="Примеры целевых обследований">
+          <div class="test-row">
+            <strong>Подозрение на лактозу</strong>
+            <p>Врач может предложить короткую пробу с уменьшением лактозы и повторным введением или дыхательный тест. Важно, чтобы симптомы действительно совпадали с приёмом лактозы: одно только нарушение всасывания не всегда означает клиническую непереносимость.<a class="cite" href="#src-6">[6]</a></p>
+          </div>
+          <div class="test-row">
+            <strong>Диарея, похудение, анемия</strong>
+            <p>Могут потребоваться анализы крови, серология на целиакию и другие исследования по показаниям. При подозрении на СРК с диареей ACG рекомендует обсудить тестирование на целиакию и фекальный кальпротектин для исключения воспалительного заболевания кишечника.<a class="cite" href="#src-4">[4]</a></p>
+          </div>
+          <div class="test-row">
+            <strong>СИБР — только у выбранных пациентов</strong>
+            <p>Водородный/метановый дыхательный тест может рассматриваться при симптомах вместе с факторами риска. Тесты имеют ограничения и трактуются врачом в клиническом контексте; это не универсальный скрининг при любом вздутии.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-8">[8]</a></p>
+          </div>
+          <div class="test-row">
+            <strong>Эндоскопия, снимки, моторика</strong>
+            <p>По рекомендации AGA визуализацию и верхнюю эндоскопию обычно оставляют для тревожных признаков, недавнего ухудшения или отклонений при осмотре. Исследование опорожнения желудка не делают рутинно при одном вздутии — его могут рассматривать при тошноте и рвоте.<a class="cite" href="#src-3">[3]</a></p>
+          </div>
+        </div>
+        <div class="notice warning"><strong>Не исключайте глютен до обследования на целиакию.</strong> Безглютеновое питание может повлиять на результаты тестов. Сначала обсудите анализы с врачом, пока в рационе ещё есть глютен.<a class="cite" href="#src-7">[7]</a></div>
+      </div>
+    </section>
+
+    <section id="treatment" aria-labelledby="treatment-title">
+      <div class="section-head">
+        <div class="section-no">04 · Что помогает</div>
+        <h2 id="treatment-title">Лечение зависит от механизма — универсальной таблетки нет</h2>
+        <p class="section-desc">Начинают с простых изменений и коррекции подтверждённой причины. Если симптомы связаны с СРК, запором или нарушением эвакуации, лечат именно эти состояния.</p>
+      </div>
+      <div class="treatment-intro">
+        <p><strong>Рабочая стратегия:</strong> менять по одному фактору, оценивать эффект и не сужать рацион без необходимости. Если вмешательство не помогло в заранее оговорённый срок — его прекращают, а не делают диету всё строже.<a class="cite" href="#src-5">[5]</a></p>
+        <span class="evidence-stamp">пошагово · без самолечения антибиотиками</span>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:16px">
+        <article class="card">
+          <div class="card-index">01</div>
+          <h3>Снизить заглатывание воздуха</h3>
+          <p>Есть медленнее, не торопиться и по возможности не разговаривать с полным ртом; ограничить жвачку, леденцы, трубочки и газированные напитки. При преимущественной отрыжке это логичнее, чем «лечить микрофлору».<a class="cite" href="#src-2">[2]</a></p>
+        </article>
+        <article class="card">
+          <div class="card-index">02</div>
+          <h3>Вести дневник 1–2 недели</h3>
+          <p>Отмечать еду, время симптомов, стул и принятые лекарства. Затем проверять одну гипотезу за раз: например, конкретный продукт или газировку. Цель — найти переносимую порцию и триггеры, а не запретить всё подряд.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-2">[2]</a></p>
+        </article>
+        <article class="card">
+          <div class="card-index">03</div>
+          <h3>Наладить стул и движение</h3>
+          <p>Регулярная физическая активность и лечение запора могут уменьшить задержку содержимого и облегчить отхождение газа. При выраженном натуживании или постоянном чувстве неполного опорожнения стоит обсудить с врачом проблему тазового дна.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-9">[9]</a></p>
+        </article>
+      </div>
+
+      <div class="table-wrap" role="region" aria-label="Таблица методов лечения и силы доказательств" tabindex="0">
+        <table>
+          <thead>
+            <tr><th>Метод</th><th>Когда может быть уместен</th><th>Что говорит доказательная база</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Уменьшить лактозу / фермент лактаза</td>
+              <td>Если молоко или другие источники лактозы регулярно вызывают симптомы. Часто достаточно подобрать переносимую порцию или безлактозный продукт.</td>
+              <td><span class="evidence">Целевое лечение</span><br>Лактаза помогает некоторым людям с непереносимостью; полное исключение всех молочных продуктов требуется не всем.<a class="cite" href="#src-6">[6]</a></td>
+            </tr>
+            <tr>
+              <td>Диета low-FODMAP</td>
+              <td>При диагностированном СРК, если общие меры не помогли и симптомы связаны с едой.</td>
+              <td><span class="evidence limited">Условная рекомендация</span><br>Одна из лучше всего изученных диет при СРК, но не обязательна для всех. Ограничение — не дольше 4–6 недель; далее — поэтапное возвращение продуктов и персонализация, желательно с диетологом. Если улучшения нет — прекратить.<a class="cite" href="#src-4">[4]</a><a class="cite" href="#src-5">[5]</a></td>
+            </tr>
+            <tr>
+              <td>Растворимая клетчатка (например, псиллиум)</td>
+              <td>При СРК, особенно если есть запор; дозу обычно увеличивают постепенно.</td>
+              <td><span class="evidence">Умеренная поддержка при СРК</span><br>ACG рекомендует растворимую, но не нерастворимую клетчатку для общих симптомов СРК. Отруби и резкое увеличение клетчатки у некоторых усиливают газообразование.<a class="cite" href="#src-4">[4]</a></td>
+            </tr>
+            <tr>
+              <td>Лечение запора / биофидбек</td>
+              <td>Если вздутие сопровождается редким твёрдым стулом, натуживанием или трудным опорожнением.</td>
+              <td><span class="evidence">По установленной причине</span><br>AGA советует рассматривать лечение запора; при выявленном расстройстве тазового дна может помочь тренировка с биологической обратной связью.<a class="cite" href="#src-3">[3]</a></td>
+            </tr>
+            <tr>
+              <td>Дыхательные и поведенческие методы</td>
+              <td>При частой супрагастральной отрыжке или некоторых функциональных формах вздутия.</td>
+              <td><span class="evidence limited">Для отдельных случаев</span><br>AGA указывает на диафрагмальное дыхание, когнитивно-поведенческую терапию, логопедические техники и другие методы работы с осью «кишечник—мозг». Это не означает, что симптом «выдуман».<a class="cite" href="#src-3">[3]</a></td>
+            </tr>
+            <tr>
+              <td>Альфа-галактозидаза</td>
+              <td>Можно обсудить перед едой с бобовыми, если именно она предсказуемо вызывает газ.</td>
+              <td><span class="evidence limited">Ограниченные данные</span><br>Может помочь части людей при конкретной пищевой нагрузке; это не универсальное лечение вздутия.<a class="cite" href="#src-10">[10]</a></td>
+            </tr>
+            <tr>
+              <td>Симетикон</td>
+              <td>Некоторые пробуют кратковременно для симптоматического облегчения.</td>
+              <td><span class="evidence limited">Эффект неубедителен</span><br>Качественных данных о пользе при обычном газообразовании мало; средство не устраняет пищевой триггер, запор или другую причину.<a class="cite" href="#src-10">[10]</a></td>
+            </tr>
+            <tr>
+              <td>Пробиотики</td>
+              <td>Не стоит начинать автоматически только из-за вздутия.</td>
+              <td><span class="evidence avoid">Не рекомендуются рутинно</span><br>AGA не рекомендует пробиотики для лечения вздутия и дистензии; ACG предлагает не использовать их как стандартное лечение общих симптомов СРК.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-4">[4]</a></td>
+            </tr>
+            <tr>
+              <td>Антибиотики</td>
+              <td>Только если врач установил конкретное показание — например, выбрал терапию СРК с диареей или обоснованно лечит СИБР.</td>
+              <td><span class="evidence avoid">Не от «газов вообще»</span><br>Рифаксимин может применяться при СРК с диареей; при СИБР стратегия подбирается врачом, а доказательность отдельных схем ограничена. Самостоятельные и повторные курсы несут риски.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-4">[4]</a><a class="cite" href="#src-8">[8]</a></td>
+            </tr>
+            <tr>
+              <td>Активированный уголь</td>
+              <td>Не считать доказанным универсальным средством от вздутия.</td>
+              <td><span class="evidence avoid">Польза неясна</span><br>Исследования не показывают убедительной пользы; уголь может снижать всасывание принимаемых внутрь лекарств.<a class="cite" href="#src-10">[10]</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Указания в таблице относятся к взрослым и не заменяют индивидуальный подбор лечения. Рекомендация «условная» означает, что польза вероятна для части людей, но решение зависит от ситуации и уверенность в эффекте ограничена.</p>
+
+      <div class="two-col-note">
+        <div class="mini-panel">
+          <h3>Если предполагается СРК</h3>
+          <p>СРК обычно включает повторяющуюся боль в животе вместе с изменением частоты или формы стула; вздутие часто сопутствует. Лечат ведущий вариант стула и боль, а не просто «выводят газы». При диарее врач может назначать целевые анализы; при запоре — лечение запора и, при необходимости, специальные препараты.<a class="cite" href="#src-4">[4]</a></p>
+        </div>
+        <div class="mini-panel">
+          <h3>Если подозревается СИБР</h3>
+          <p>Не стоит ставить диагноз по списку симптомов или лечиться антибиотиком «на всякий случай». Врач оценивает факторы риска, решает, нужен ли тест, и сопоставляет его с клинической картиной. Данные по лечению и повторным курсам ограничены.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-8">[8]</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="avoid-title">
+      <div class="section-head">
+        <div class="section-no">05 · Частые ошибки</div>
+        <h2 id="avoid-title">Что обычно не стоит делать самостоятельно</h2>
+      </div>
+      <div class="myth-list">
+        <div class="myth"><span class="myth-mark" aria-hidden="true">×</span><span><strong>Убирать сразу молочное, глютен, бобовые, фрукты и всю клетчатку.</strong> Это может сделать рацион беднее и не выявить настоящий триггер. Проверяйте одну гипотезу за раз; строгие диеты лучше проводить с диетологом.</span></div>
+        <div class="myth"><span class="myth-mark" aria-hidden="true">×</span><span><strong>Начинать безглютеновую диету до тестов на целиакию.</strong> Анализы могут стать менее информативными.<a class="cite" href="#src-7">[7]</a></span></div>
+        <div class="myth"><span class="myth-mark" aria-hidden="true">×</span><span><strong>Пить антибиотики, противопаразитарные препараты или «чистить микрофлору» без диагноза.</strong> Они не являются стандартным лечением обычного метеоризма и могут навредить.</span></div>
+        <div class="myth"><span class="myth-mark" aria-hidden="true">×</span><span><strong>Считать любой положительный дыхательный тест объяснением всех симптомов.</strong> При СИБР результаты интерпретируют вместе с анамнезом и рисками; тест не заменяет клиническую оценку.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-8">[8]</a></span></div>
+      </div>
+    </section>
+
+    <section id="redflags" aria-labelledby="redflags-title">
+      <div class="section-head">
+        <div class="section-no">06 · Безопасность</div>
+        <h2 id="redflags-title">Когда обращаться за медицинской помощью</h2>
+        <p class="section-desc">Обычное периодическое газообразование часто не опасно. Новые, стойкие или нарастающие симптомы, особенно вместе с другими признаками, требуют оценки.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-9">[9]</a></p>
+      </div>
+      <div class="warning-grid">
+        <article class="warning-card urgent">
+          <h3><span aria-hidden="true">!</span> Срочно — не ждать</h3>
+          <p>Обратитесь за экстренной помощью, если есть:</p>
+          <ul>
+            <li>сильная внезапная боль в животе;</li>
+            <li>быстро нарастающее вздутие с повторной рвотой;</li>
+            <li>невозможность отойти стулу или газам, особенно с болью и рвотой;</li>
+            <li>кровавая рвота, обморок или резкое ухудшение самочувствия.</li>
+          </ul>
+        </article>
+        <article class="warning-card soon">
+          <h3><span aria-hidden="true">↗</span> Запишитесь к врачу</h3>
+          <p>Не откладывайте оценку, если:</p>
+          <ul>
+            <li>вздутие новое, регулярно повторяется, нарастает или не проходит;</li>
+            <li>есть непреднамеренное снижение веса, кровь в стуле или признаки анемии;</li>
+            <li>сохраняются диарея, запор, лихорадка или изменение привычного стула;</li>
+            <li>появилось уплотнение/увеличение живота либо симптомы заметно мешают повседневной жизни.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="route" aria-labelledby="route-title">
+      <div class="section-head">
+        <div class="section-no">07 · Практический маршрут</div>
+        <h2 id="route-title">План, с которого можно начать</h2>
+        <p class="section-desc">Если тревожных признаков нет, не нужно одновременно менять весь рацион. Попробуйте спокойно собрать данные и обсудить устойчивые симптомы с врачом.</p>
+      </div>
+      <div class="route">
+        <article class="route-item">
+          <div class="route-day">Шаг 1 · наблюдение</div>
+          <p>В течение 1–2 недель фиксируйте время еды, симптом, стул, лекарства и возможные триггеры.</p>
+        </article>
+        <article class="route-item">
+          <div class="route-day">Шаг 2 · простые меры</div>
+          <p>Ешьте медленнее, уменьшите газировку и жвачку; при запоре добавьте посильную активность и обсудите лечение.</p>
+        </article>
+        <article class="route-item">
+          <div class="route-day">Шаг 3 · одна проверка</div>
+          <p>Проверьте один предполагаемый продукт и затем верните его в рацион, чтобы понять, действительно ли он связан с симптомом.</p>
+        </article>
+        <article class="route-item">
+          <div class="route-day">Шаг 4 · если сохраняется</div>
+          <p>При регулярных или мешающих симптомах обратитесь к врачу: вместе решите, нужны ли целевые анализы, диетолог или лечение СРК/запора.</p>
+        </article>
+      </div>
+      <div class="notice info"><strong>Главный критерий успеха — не «ноль газов».</strong> Нормальная пищеварительная система вырабатывает газ. Цель — уменьшить неприятные симптомы, не ухудшая питание и качество жизни.</div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <div class="section-head">
+        <div class="section-no">Короткие ответы</div>
+        <h2 id="faq-title">Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Нужно ли полностью отказаться от бобовых и капусты?</summary>
+          <p>Нет, если они не вызывают заметных симптомов. Порция и способ приготовления могут иметь значение. Сначала проверьте индивидуальную переносимость; при необходимости уменьшите порцию, а не исключайте всю группу продуктов.</p>
+        </details>
+        <details>
+          <summary>Вздутие означает, что у меня «дисбактериоз»?</summary>
+          <p>Нет. Вздутие имеет много возможных механизмов — от ферментации и запора до СРК и повышенной чувствительности. По одному симптому нельзя диагностировать изменение микробиома или СИБР.</p>
+        </details>
+        <details>
+          <summary>Пробиотик поможет?</summary>
+          <p>Надёжного основания принимать любой пробиотик при вздутии нет: эффекты разных штаммов не взаимозаменяемы, а AGA не рекомендует пробиотики именно для лечения вздутия и дистензии.<a class="cite" href="#src-3">[3]</a></p>
+        </details>
+        <details>
+          <summary>Можно ли по количеству газов понять, что есть заболевание?</summary>
+          <p>Нет. Частота сильно различается; до примерно 25 отхождений газа в сутки может быть нормой. Важны стойкое изменение привычного состояния, степень дискомфорта и сопутствующие признаки.<a class="cite" href="#src-1">[1]</a></p>
+        </details>
+      </div>
+    </section>
+
+    <section id="sources" aria-labelledby="sources-title">
+      <div class="sources">
+        <div class="section-no">Для проверки</div>
+        <h2 id="sources-title">Источники и рекомендации</h2>
+        <p class="section-desc">Приоритет — клинические рекомендации профессиональных гастроэнтерологических организаций и материалы национальных институтов здравоохранения. Доказательность отдельных вмешательств различается; экспертные рекомендации не всегда означают высокую уверенность в эффекте.</p>
+        <ol>
+          <li id="src-1"><span class="source-title">National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK). Symptoms &amp; Causes of Gas in the Digestive Tract.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/gas-digestive-tract/symptoms-causes" target="_blank" rel="noopener noreferrer">Открыть материал NIDDK</a> · причины, типичные симптомы, нормальный диапазон частоты и когда обратиться к врачу.</span></li>
+          <li id="src-2"><span class="source-title">NIDDK. Eating, Diet, &amp; Nutrition for Gas in the Digestive Tract.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/gas-digestive-tract/eating-diet-nutrition" target="_blank" rel="noopener noreferrer">Открыть материал NIDDK</a> · пищевые углеводы, привычки при еде и дневник симптомов.</span></li>
+          <li id="src-3"><span class="source-title">Moshiree B, Drossman D, Shaukat A. AGA Clinical Practice Update on Evaluation and Management of Belching, Abdominal Bloating, and Distention: Expert Review. Gastroenterology. 2023;165(3):791–800.e3.</span><span class="source-meta"><a href="https://doi.org/10.1053/j.gastro.2023.04.039" target="_blank" rel="noopener noreferrer">DOI: 10.1053/j.gastro.2023.04.039</a> · диагностика, ограничения обследований, питание, СИБР, запор и поведенческие методы.</span></li>
+          <li id="src-4"><span class="source-title">Lacy BE et al. ACG Clinical Guideline: Management of Irritable Bowel Syndrome. American Journal of Gastroenterology. 2021;116(1):17–44.</span><span class="source-meta"><a href="https://doi.org/10.14309/ajg.0000000000001036" target="_blank" rel="noopener noreferrer">DOI: 10.14309/ajg.0000000000001036</a> · диета low-FODMAP, растворимая клетчатка, диагностика и лечение СРК.</span></li>
+          <li id="src-5"><span class="source-title">Chey WD et al. AGA Clinical Practice Update on the Role of Diet in Irritable Bowel Syndrome: Expert Review. Gastroenterology. 2022.</span><span class="source-meta"><a href="https://doi.org/10.1053/j.gastro.2021.12.248" target="_blank" rel="noopener noreferrer">DOI: 10.1053/j.gastro.2021.12.248</a> · трёхэтапная low-FODMAP-диета, срок ограничения и последующее возвращение продуктов.</span></li>
+          <li id="src-6"><span class="source-title">NIDDK. Diagnosis and Treatment of Lactose Intolerance.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/diagnosis" target="_blank" rel="noopener noreferrer">Диагностика</a> · <a href="https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/treatment" target="_blank" rel="noopener noreferrer">лечение</a> · пробная коррекция питания, дыхательный тест и лактаза.</span></li>
+          <li id="src-7"><span class="source-title">NIDDK. Diagnosis of Celiac Disease.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/diagnosis" target="_blank" rel="noopener noreferrer">Открыть материал NIDDK</a> · тестирование и почему не следует переходить на безглютеновое питание до диагностики.</span></li>
+          <li id="src-8"><span class="source-title">Pimentel M et al. ACG Clinical Guideline: Small Intestinal Bacterial Overgrowth. American Journal of Gastroenterology. 2020;115(2):165–178.</span><span class="source-meta"><a href="https://doi.org/10.14309/ajg.0000000000000501" target="_blank" rel="noopener noreferrer">DOI: 10.14309/ajg.0000000000000501</a> · условные рекомендации с ограниченной уверенностью в доказательствах.</span></li>
+          <li id="src-9"><span class="source-title">NHS. Bloating. Страница пересмотрена 21 января 2026 года.</span><span class="source-meta"><a href="https://www.nhs.uk/symptoms/bloating/" target="_blank" rel="noopener noreferrer">Открыть страницу NHS</a> · самопомощь и признаки, при которых нужна медицинская оценка.</span></li>
+          <li id="src-10"><span class="source-title">Mayo Clinic. Gas and gas pains: Diagnosis and treatment. 20 сентября 2025 года.</span><span class="source-meta"><a href="https://www.mayoclinic.org/diseases-conditions/gas-and-gas-pains/diagnosis-treatment/drc-20372714" target="_blank" rel="noopener noreferrer">Открыть страницу Mayo Clinic</a> · безрецептурные средства, альфа-галактозидаза, симетикон и активированный уголь.</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="footer-inner">
+      <p>Информационный материал для взрослых. Он не ставит диагноз и не заменяет очную консультацию. При сильной боли, рвоте, крови в стуле или быстром ухудшении обращайтесь за медицинской помощью.</p>
+      <a class="backtop" href="#top">↑ Наверх</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+name: Релиз
+
+# Публикация новой версии: тег v* -> релиз на GitHub + update.json,
+# который приложение читает при автопроверке обновления.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Версия релиза, например 1.1.0'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Собрать и опубликовать релиз
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Получить исходники
+        uses: actions/checkout@v4
+
+      - name: Подготовить Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Подготовить Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Установить компоненты SDK
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Определить версию
+        id: version
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="v${{ inputs.version }}"
+            REQUESTED="${{ inputs.version }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+            REQUESTED="${GITHUB_REF_NAME#v}"
+          fi
+          CURRENT_NAME="$(grep -oP "versionName\s+'\K[^']+" app/build.gradle | head -1)"
+          CURRENT_CODE="$(grep -oP 'versionCode\s+\K[0-9]+' app/build.gradle | head -1)"
+          if [ "$REQUESTED" != "$CURRENT_NAME" ]; then
+            NEW_CODE=$((CURRENT_CODE + 1))
+            echo "Версия в build.gradle ($CURRENT_NAME/$CURRENT_CODE) не совпадает с запросом ($REQUESTED)."
+            echo "Обновляю версию в рабочей копии сборки: $REQUESTED/$NEW_CODE"
+            sed -i "s/versionCode $CURRENT_CODE/versionCode $NEW_CODE/" app/build.gradle
+            sed -i "s/versionName '$CURRENT_NAME'/versionName '$REQUESTED'/" app/build.gradle
+            CURRENT_NAME="$REQUESTED"
+            CURRENT_CODE="$NEW_CODE"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "name=$CURRENT_NAME" >> "$GITHUB_OUTPUT"
+          echo "code=$CURRENT_CODE" >> "$GITHUB_OUTPUT"
+
+      - name: Собрать release
+        run: ./gradlew --no-daemon --stacktrace assembleRelease
+
+      - name: Проверить подпись постоянным ключом
+        run: |
+          chmod +x .github/scripts/verify-signature.sh
+          .github/scripts/verify-signature.sh $(ls app/build/outputs/apk/release/*.apk | head -1)
+
+      - name: Подготовить update.json
+        run: |
+          set -euo pipefail
+          APK="$(ls app/build/outputs/apk/release/*.apk | head -1)"
+          SHA256="$(sha256sum "$APK" | awk '{print $1}')"
+          SIZE="$(stat -c%s "$APK")"
+          URL="https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.tag }}/$(basename "$APK")"
+          cat > update.json <<JSON
+          {
+            "version_code": ${{ steps.version.outputs.code }},
+            "version_name": "${{ steps.version.outputs.name }}",
+            "url": "$URL",
+            "sha256": "$SHA256",
+            "size": $SIZE,
+            "notes": "Обновление приложения «Еда и самочувствие».",
+            "published_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          JSON
+          cat update.json
+
+      - name: Опубликовать релиз
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "${{ steps.version.outputs.name }}"
+          tag_name: "${{ steps.version.outputs.tag }}"
+          body: |
+            Версия ${{ steps.version.outputs.name }} (versionCode ${{ steps.version.outputs.code }}).
+
+            Установка: скачайте `food-diary-${{ steps.version.outputs.name }}.apk` и откройте файл.
+            Приложение подписано постоянным ключом, поэтому релиз ставится поверх
+            ранее установленной версии, а записи дневника сохраняются.
+          files: |
+            app/build/outputs/apk/release/*.apk
+            update.json
+          fail_on_unmatched_files: true
