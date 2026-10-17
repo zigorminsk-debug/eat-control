@@ -1,5 +1,6 @@
 package by.arena.fooddiary;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -281,6 +282,9 @@ public class UpdateManager {
         }
     }
 
+    // Константа ACTION_MANAGE_UNKNOWN_APP_SOURCES появилась в API 26, но её
+    // значение — обычная строка, поэтому на старых устройствах вызов безопасен.
+    @SuppressLint("InlinedApi")
     private void openInstallPermission(Activity activity) {
         try {
             Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
