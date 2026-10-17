@@ -37,9 +37,13 @@ if ! unzip -p "$APK" classes.dex | grep -qa "Еда и самочувствие"
   echo "::error::русские строки в classes.dex искажены — проблема с кодировкой сборки"
   exit 1
 fi
-if ! unzip -p "$APK" resources.arsc | grep -qa "Еда и самочувствие"; then
-  echo "::error::русские строки в resources.arsc искажены — проблема с кодировкой сборки"
-  exit 1
+if [ -x "$AAPT2" ]; then
+  # Название приложения лежит в resources.arsc (UTF-16), поэтому проверяем
+  # его через текстовый вывод aapt2, а не поиском по бинарному файлу.
+  if ! "$AAPT2" dump badging "$APK" | grep -q "Еда и самочувствие"; then
+    echo "::error::название приложения искажено — проблема с кодировкой сборки"
+    exit 1
+  fi
 fi
 
 if [ -x "$APKSIGNER" ]; then

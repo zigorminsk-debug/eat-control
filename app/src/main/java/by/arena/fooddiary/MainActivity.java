@@ -1,5 +1,6 @@
 package by.arena.fooddiary;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -365,7 +366,7 @@ public class MainActivity extends Activity {
             controlCheck.setText("Контрольная отметка: заметных симптомов сейчас нет");
             controlCheck.setTextColor(INK);
             controlCheck.setTextSize(13);
-            if (Build.VERSION.SDK_INT >= 21) controlCheck.setButtonTintList(ColorStateList.valueOf(GREEN));
+            controlCheck.setButtonTintList(ColorStateList.valueOf(GREEN));
             controlCheck.setPadding(0, dp(5), 0, dp(5));
             page.addView(controlCheck);
             addGap(page, 5);
@@ -715,13 +716,12 @@ public class MainActivity extends Activity {
         SeekBar seek = new SeekBar(this);
         seek.setMax(10);
         seek.setProgress(initial);
-        if (Build.VERSION.SDK_INT >= 21) {
-            seek.setProgressTintList(ColorStateList.valueOf(GREEN));
-            seek.setThumbTintList(ColorStateList.valueOf(GREEN));
-            seek.setProgressBackgroundTintList(ColorStateList.valueOf(LINE));
-        }
+        seek.setProgressTintList(ColorStateList.valueOf(GREEN));
+        seek.setThumbTintList(ColorStateList.valueOf(GREEN));
+        seek.setProgressBackgroundTintList(ColorStateList.valueOf(LINE));
         seek.setContentDescription(title);
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) { value.setText(progress + "/10"); }
             @Override public void onStartTrackingTouch(SeekBar bar) { }
             @Override public void onStopTrackingTouch(SeekBar bar) { }
