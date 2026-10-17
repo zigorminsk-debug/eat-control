@@ -33,7 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
@@ -1026,9 +1026,16 @@ public class MainActivity extends Activity {
         Uri uri = data.getData();
         if (uri == null) return;
         // Поток открывается первым: если файл недоступен, openOutputStream
-        // вернёт null, и без проверки конструктор OutputStreamWriter упал бы
-        // с NullPointerException вместо понятного сообщения.
-        OutputStream out = getContentResolver().openOutputStream(uri);
+        // вернёт null или бросит FileNotFoundException, и без проверки
+        // конструктор OutputStreamWriter упал бы с NullPointerException
+        // вместо понятного сообщения.
+        OutputStream out;
+        try {
+            out = getContentResolver().openOutputStream(uri);
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "Не удалось открыть файл для записи", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (out == null) {
             Toast.makeText(this, "Не удалось открыть файл для записи", Toast.LENGTH_LONG).show();
             return;
