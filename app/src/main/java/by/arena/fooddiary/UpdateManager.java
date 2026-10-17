@@ -56,6 +56,10 @@ public class UpdateManager {
     private static final String USER_AGENT = "FoodDiary-Android/" + BuildConfig.VERSION_NAME;
     private static final int BUFFER = 16 * 1024;
 
+    private static final String PREFS = "local_diary_v1";
+    private static final String KEY_LAST_CHECK = "update_check_ts";
+    private static final long CHECK_INTERVAL_MS = 24L * 60L * 60L * 1000L;
+
     private static final int INK = 0xFF1A3133;
     private static final int MUTED = 0xFF637474;
     private static final int GREEN = 0xFF237063;
