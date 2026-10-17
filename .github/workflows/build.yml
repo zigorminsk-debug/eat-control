@@ -61,7 +61,23 @@ jobs:
 
       - name: Отчёт о линте
         if: always()
-        run: ./gradlew --no-daemon lintRelease || true
+        run: |
+          ./gradlew --no-daemon lintRelease || true
+          REPORT=app/build/reports/lint-results-release.txt
+          {
+            echo "### Отчёт о линте"
+            echo ""
+            if [ -f "$REPORT" ]; then
+              sed -n '1,120p' "$REPORT"
+            else
+              echo "Отчёт не найден"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "$REPORT" ]; then
+            grep -E "Error:|Warning:" "$REPORT" | head -30 | while IFS= read -r line; do
+              echo "::warning::lint — $line"
+            done
+          fi
 
       - name: Сохранить APK
         uses: actions/upload-artifact@v7
