@@ -23,21 +23,25 @@ jobs:
 
     steps:
       - name: Получить исходники
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Подготовить Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '17'
           cache: gradle
 
       - name: Подготовить Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
 
-      - name: Установить компоненты SDK
+      - name: Проверить состав SDK
         run: |
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          set -euo pipefail
+          test -d "${ANDROID_HOME}/platforms/android-35" || { echo "::error::не установлен platform android-35"; exit 1; }
+          test -d "${ANDROID_HOME}/build-tools/35.0.0" || { echo "::error::не установлен build-tools 35.0.0"; exit 1; }
 
       - name: Определить версию
         id: version
@@ -94,7 +98,7 @@ jobs:
           cat update.json
 
       - name: Опубликовать релиз
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: "${{ steps.version.outputs.name }}"
           tag_name: "${{ steps.version.outputs.tag }}"
