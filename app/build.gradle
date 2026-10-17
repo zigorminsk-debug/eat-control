@@ -35,6 +35,9 @@ android {
     defaultConfig {
         applicationId 'by.arena.fooddiary'
         minSdk 23
+        // targetSdk 34: на Android 15 (API 35) включён режим edge-to-edge,
+        // а приложение строит интерфейс кодом и не разбирает insets.
+        // При целевой версии 34 поведение не меняется.
         targetSdk 34
         versionCode 3
         versionName '1.1.0'
