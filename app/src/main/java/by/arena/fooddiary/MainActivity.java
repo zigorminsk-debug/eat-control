@@ -578,7 +578,7 @@ public class MainActivity extends Activity {
                 row.addView(food, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
                 LinearLayout numbers = new LinearLayout(this);
                 numbers.setOrientation(LinearLayout.VERTICAL);
-                numbers.setGravity(Gravity.RIGHT);
+                numbers.setGravity(Gravity.END);
                 numbers.addView(text("симптом: " + counts[0], 11, counts[0] > 0 ? RED : MUTED, true));
                 numbers.addView(text("контроль: " + counts[1], 10, MUTED, false));
                 row.addView(numbers);
@@ -698,7 +698,7 @@ public class MainActivity extends Activity {
 
                 LinearLayout numbers = new LinearLayout(this);
                 numbers.setOrientation(LinearLayout.VERTICAL);
-                numbers.setGravity(Gravity.RIGHT);
+                numbers.setGravity(Gravity.END);
                 numbers.addView(text("приступ: " + counts[0], 11, counts[0] > 0 ? RED : MUTED, true));
                 numbers.addView(text("контроль: " + counts[1], 10, MUTED, false));
                 row.addView(numbers);
