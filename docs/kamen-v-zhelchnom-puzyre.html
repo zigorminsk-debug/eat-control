@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Понятный разбор желчнокаменной болезни: как выглядит желчная колика, что вызывает приступ, какие обследования нужны, когда требуется срочная помощь и почему таблеток, растворяющих камни, не существует.">
+  <meta name="theme-color" content="#173a3b">
+  <title>Камни в желчном пузыре: симптомы, обследование и лечение</title>
+  <style>
+    :root {
+      --ink: #183337;
+      --muted: #5e7071;
+      --paper: #f5f6f2;
+      --surface: #ffffff;
+      --line: #dce5e0;
+      --green: #17665b;
+      --green-dark: #123f3d;
+      --green-soft: #e9f3ef;
+      --gold: #e5bd70;
+      --gold-soft: #fbf4e5;
+      --red: #a7423d;
+      --red-soft: #fff0ed;
+      --shadow: 0 14px 40px rgba(24, 51, 55, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 18px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-underline-offset: 3px; }
+    a:hover { color: #0d4a42; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #dda949; outline-offset: 3px; border-radius: 4px; }
+    p { margin: 0 0 14px; }
+    h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -.025em; }
+    h1, h2, h3 { margin: 0; }
+    h2 { font-size: clamp(1.65rem, 3vw, 2.35rem); }
+    h3 { font-size: 1.12rem; }
+    ul, ol { margin: 10px 0 0; padding-left: 1.25rem; }
+    li { padding-left: 3px; margin: 0 0 7px; }
+    strong { font-weight: 720; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topline { background: #f5f6f2; }
+    .topbar { min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .82rem; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 760; text-decoration: none; letter-spacing: -.02em; }
+    .brand-mark { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--green-dark); color: #fff; font-size: .9rem; }
+    .top-meta { display: flex; align-items: center; gap: 9px; }
+    .dot { width: 5px; height: 5px; display: inline-block; border-radius: 50%; background: var(--gold); }
+    .hero-shell { background: #f5f6f2; padding-bottom: 28px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+      gap: clamp(30px, 6vw, 74px);
+      align-items: center;
+      min-height: 435px;
+      padding: clamp(34px, 6vw, 68px);
+      border-radius: 30px;
+      color: #f6faf7;
+      background:
+        radial-gradient(circle at 79% 4%, rgba(229,189,112,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 92% 55%, rgba(229,189,112,.14) 0 100px, transparent 102px),
+        linear-gradient(132deg, #123e3d 0%, #1a5550 55%, #1d6255 100%);
+      box-shadow: 0 22px 50px rgba(18,63,61,.14);
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; pointer-events: none; }
+    .hero::before { width: 360px; height: 360px; right: -120px; top: -180px; }
+    .hero::after { width: 250px; height: 250px; right: -54px; top: -126px; }
+    .hero-main, .hero-side { position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 16px; color: #d4e4dc; font-size: .75rem; font-weight: 760; letter-spacing: .13em; text-transform: uppercase; }
+    .hero h1 { max-width: 720px; font-size: clamp(2.4rem, 5vw, 4.25rem); line-height: 1.05; letter-spacing: -.055em; }
+    .hero h1 span { color: #e8c77f; }
+    .hero-lead { max-width: 670px; margin: 22px 0 25px; color: rgba(246,250,247,.82); font-size: 1.07rem; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 11px; color: #f5faf7; font-size: .78rem; }
+    .pill-mark { color: var(--gold); font-weight: 900; }
+    .hero-button { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 11px; background: #f6e8c7; color: #243d37; font-weight: 730; text-decoration: none; font-size: .9rem; transition: transform .18s ease, background .18s ease; }
+    .hero-button:hover { color: #243d37; background: #f0d99f; transform: translateY(-1px); }
+    .hero-button .arrow { font-size: 1.15rem; line-height: 1; }
+    .keybox { background: #f7f4eb; color: var(--ink); padding: 23px; border-radius: 20px; box-shadow: 0 18px 38px rgba(7,35,33,.16); }
+    .keybox-label { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--green); font-size: .75rem; font-weight: 780; letter-spacing: .08em; text-transform: uppercase; }
+    .keybox h2 { font-size: 1.25rem; margin-bottom: 9px; }
+    .keybox p { color: #536766; font-size: .91rem; margin-bottom: 18px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 15px; border-top: 1px solid #dedfd5; }
+    .stat { padding: 5px 4px; }
+    .stat strong { display: block; color: var(--green-dark); font-size: 1.4rem; letter-spacing: -.04em; }
+    .stat span { display: block; color: #687777; font-size: .75rem; line-height: 1.35; }
+    .keybox .fine { display: block; margin-top: 12px; color: #738080; font-size: .71rem; line-height: 1.45; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px auto 0; padding: 11px; border: 1px solid #e1e7e2; border-radius: 16px; background: rgba(255,255,255,.72); }
+    .toc a { padding: 7px 11px; border-radius: 9px; color: #425c5b; font-size: .83rem; font-weight: 650; text-decoration: none; }
+    .toc a:hover { background: var(--green-soft); color: var(--green-dark); }
+    main { padding: 8px 0 60px; }
+    section { margin: 50px 0; scroll-margin-top: 18px; }
+    .section-head { max-width: 780px; margin-bottom: 23px; }
+    .section-no { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--green); font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .section-no::before { content: ""; width: 22px; height: 2px; background: var(--gold); }
+    .section-desc { max-width: 760px; margin-top: 11px; color: var(--muted); font-size: 1rem; }
+    .takeaway { display: grid; grid-template-columns: 46px 1fr; gap: 17px; align-items: start; padding: 22px 25px; border: 1px solid #dce9e3; border-radius: var(--radius); background: linear-gradient(112deg, #e8f3ee, #f8faf6); }
+    .takeaway-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: var(--green); color: white; font-size: 1.2rem; font-weight: 800; }
+    .takeaway p { margin: 0; color: #375452; }
+    .takeaway strong { color: #173f3b; }
+    .cite { color: var(--green); font-size: .75em; font-weight: 800; text-decoration: none; vertical-align: super; margin-left: 1px; }
+    .cite:hover { text-decoration: underline; }
+    .grid-4, .grid-3, .grid-2 { display: grid; gap: 14px; }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { padding: 21px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 5px 16px rgba(24,51,55,.025); }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .card h3 { margin-bottom: 8px; }
+    .card p, .card li { color: var(--muted); font-size: .92rem; }
+    .card li { margin-bottom: 5px; }
+    .card-index { width: 34px; height: 34px; display: grid; place-items: center; margin-bottom: 13px; border-radius: 11px; background: var(--green-soft); color: var(--green); font-size: .88rem; font-weight: 800; }
+    .symptom-card { min-height: 180px; }
+    .symptom-card h3 { font-size: 1.02rem; }
+    .symptom-card .small-label { display: block; margin-top: 13px; color: #758481; font-size: .75rem; }
+    .callout { margin-top: 16px; padding: 16px 19px; border-left: 3px solid var(--gold); border-radius: 0 13px 13px 0; background: var(--gold-soft); color: #5b553f; font-size: .92rem; }
+    .cause-card { position: relative; overflow: hidden; min-height: 220px; }
+    .cause-card::after { content: ""; position: absolute; right: -26px; bottom: -44px; width: 110px; height: 110px; border: 1px solid #e8efeb; border-radius: 50%; pointer-events: none; }
+    .cause-card h3 { max-width: 85%; }
+    .cause-card p { position: relative; z-index: 1; }
+    .tag { display: inline-block; margin: 0 0 11px; padding: 4px 8px; border-radius: 999px; background: #f1f5f2; color: #50716a; font-size: .68rem; font-weight: 760; letter-spacing: .03em; }
+    .tag.gold { background: #fbf1d9; color: #7f642b; }
+    .tag.red { background: #fff0ed; color: #984841; }
+    .panel { padding: clamp(20px, 3vw, 30px); border: 1px solid var(--line); border-radius: 26px; background: var(--surface); box-shadow: var(--shadow); }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 20px; border-radius: 18px; background: #f7f9f6; border: 1px solid #e4ebe6; counter-increment: step; }
+    .step::before { content: counter(step, decimal-leading-zero); display: inline-grid; place-items: center; width: 33px; height: 33px; margin-bottom: 13px; border-radius: 10px; background: var(--green-dark); color: white; font-size: .74rem; font-weight: 800; }
+    .step h3 { margin-bottom: 7px; }
+    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .test-list { margin-top: 18px; display: grid; gap: 10px; }
+    .test-row { display: grid; grid-template-columns: minmax(150px, .32fr) 1fr; gap: 17px; padding: 15px 17px; border: 1px solid #e3eae5; border-radius: 14px; background: #fff; }
+    .test-row strong { color: #224744; font-size: .9rem; }
+    .test-row p { margin: 0; color: var(--muted); font-size: .89rem; }
+    .notice { padding: 17px 20px; margin-top: 16px; border-radius: 14px; font-size: .9rem; }
+    .notice.warning { border: 1px solid #eddbb2; background: var(--gold-soft); color: #635536; }
+    .notice.info { border: 1px solid #d5e6df; background: var(--green-soft); color: #315651; }
+    .notice.danger { border: 1px solid #f1d2cc; background: var(--red-soft); color: #6c3834; }
+    .notice p:last-child { margin-bottom: 0; }
+    .treatment-intro { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-bottom: 18px; padding: 21px 24px; border-radius: 19px; background: var(--green-dark); color: #eef7f2; }
+    .treatment-intro p { margin: 0; color: #d4e4dc; }
+    .treatment-intro strong { color: #f0d28e; }
+    .evidence-stamp { white-space: nowrap; padding: 7px 10px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: #eaf4ee; font-size: .74rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 7px 22px rgba(24,51,55,.04); }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; text-align: left; }
+    thead { background: #edf4f0; }
+    th { padding: 13px 15px; color: #355551; font-size: .76rem; letter-spacing: .045em; text-transform: uppercase; }
+    td { padding: 14px 15px; border-top: 1px solid #e9efeb; vertical-align: top; color: #5b6c6c; font-size: .86rem; }
+    td:first-child { min-width: 170px; color: var(--ink); font-weight: 740; }
+    td:last-child { min-width: 180px; }
+    .evidence { display: inline-block; border-radius: 999px; padding: 4px 8px; background: #eef4ef; color: #3f6d5f; font-size: .68rem; font-weight: 780; line-height: 1.3; }
+    .evidence.limited { background: #fbf2df; color: #7b632d; }
+    .evidence.avoid { background: #fff0ed; color: #984841; }
+    .table-note { margin: 10px 2px 0; color: #6a7978; font-size: .78rem; }
+    .two-col-note { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 17px; }
+    .mini-panel { padding: 19px; border-radius: 17px; border: 1px solid var(--line); background: #fff; }
+    .mini-panel h3 { margin-bottom: 8px; }
+    .mini-panel p, .mini-panel li { color: var(--muted); font-size: .89rem; }
+    .myth-list { display: grid; gap: 9px; }
+    .myth { display: grid; grid-template-columns: 23px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border: 1px solid #e5ebe7; border-radius: 13px; background: #fff; color: #586a69; font-size: .9rem; }
+    .myth-mark { color: var(--red); font-weight: 900; }
+    .warning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .warning-card { padding: 23px; border-radius: 20px; }
+    .warning-card h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
+    .warning-card ul { margin-top: 8px; }
+    .warning-card li { font-size: .91rem; }
+    .warning-card.urgent { border: 1px solid #efc9c3; background: var(--red-soft); color: #703e39; }
+    .warning-card.soon { border: 1px solid #eadbb7; background: #fff9eb; color: #62563a; }
+    .warning-card p { margin-bottom: 7px; font-size: .9rem; }
+    .route { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .route-item { padding: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .route-day { margin-bottom: 9px; color: var(--green); font-size: .72rem; font-weight: 820; letter-spacing: .08em; text-transform: uppercase; }
+    .route-item p { margin: 0; color: var(--muted); font-size: .87rem; }
+    .faq { display: grid; gap: 9px; }
+    details { padding: 15px 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    summary { position: relative; cursor: pointer; color: #284744; font-weight: 720; list-style: none; padding-right: 28px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 1px; top: -3px; color: var(--green); font-size: 1.3rem; font-weight: 500; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 12px 0 0; color: var(--muted); font-size: .91rem; }
+    .sources { padding: clamp(21px, 3vw, 30px); border-radius: 24px; background: #eaf0eb; }
+    .sources ol { margin-top: 17px; padding-left: 1.45rem; }
+    .sources li { padding-left: 5px; margin-bottom: 12px; color: #5d706e; font-size: .83rem; }
+    .sources li::marker { color: var(--green); font-weight: 800; }
+    .sources a { font-weight: 650; }
+    .source-title { color: #314c48; font-weight: 750; }
+    .source-meta { display: block; margin-top: 2px; font-size: .76rem; color: #71807c; }
+    .footer { padding: 0 0 38px; color: #6e7d7b; font-size: .8rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-top: 21px; border-top: 1px solid #dce5e0; }
+    .footer p { margin: 0; max-width: 800px; }
+    .backtop { white-space: nowrap; font-weight: 700; text-decoration: none; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 26px; }
+      .hero-side { max-width: 520px; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .route { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .topbar { min-height: 52px; font-size: .72rem; }
+      .top-meta { gap: 6px; }
+      .hero { min-height: auto; padding: 29px 23px; border-radius: 22px; }
+      .hero h1 { font-size: clamp(2.25rem, 12vw, 3.2rem); }
+      .hero-lead { font-size: .98rem; }
+      .keybox { padding: 19px; }
+      .toc { gap: 3px; padding: 7px; }
+      .toc a { padding: 7px 8px; font-size: .75rem; }
+      section { margin: 39px 0; }
+      .grid-4, .grid-3, .grid-2, .steps, .warning-grid, .two-col-note { grid-template-columns: 1fr; }
+      .symptom-card { min-height: auto; }
+      .cause-card { min-height: auto; }
+      .test-row { grid-template-columns: 1fr; gap: 4px; }
+      .treatment-intro { grid-template-columns: 1fr; }
+      .evidence-stamp { justify-self: start; }
+      .route { grid-template-columns: 1fr 1fr; }
+      .takeaway { grid-template-columns: 36px 1fr; gap: 11px; padding: 17px; }
+      .takeaway-icon { width: 36px; height: 36px; border-radius: 11px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .topbar { align-items: flex-start; padding: 10px 0; }
+      .top-meta { text-align: right; display: block; }
+      .route { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      .hero-shell { padding: 0; }
+      .hero { box-shadow: none; min-height: 0; }
+      .toc, .hero-button, .backtop { display: none; }
+      section { margin: 28px 0; break-inside: avoid; }
+      .card, .panel, .table-wrap { box-shadow: none; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="topline">
+    <div class="wrap topbar">
+      <a class="brand" href="#top" aria-label="К началу страницы"><span class="brand-mark">Ж</span><span>Разбор здоровья</span></a>
+      <div class="top-meta"><span>Памятка для взрослых</span><span class="dot" aria-hidden="true"></span><span>Обновлено 18 октября 2026</span></div>
+    </div>
+  </div>
+
+  <div class="hero-shell">
+    <header class="wrap hero">
+      <div class="hero-main">
+        <p class="eyebrow">ЖКТ · доказательный разбор</p>
+        <h1>Камни в желчном: <span>симптомы</span>, обследование и лечение</h1>
+        <p class="hero-lead">Как выглядит желчная колика и чем она отличается от гастрита, почему приступ чаще приходит после жирной еды, что показывает УЗИ и почему «таблетки, растворяющие камни», о которых говорят в рекламе, не существует.</p>
+        <div class="hero-pills" aria-label="Ключевые темы">
+          <span class="pill"><span class="pill-mark">✓</span> симптомы</span>
+          <span class="pill"><span class="pill-mark">✓</span> УЗИ и анализы</span>
+          <span class="pill"><span class="pill-mark">✓</span> тактика</span>
+        </div>
+        <a class="hero-button" href="#route">Перейти к плану действий <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <aside class="hero-side" aria-label="Главная мысль">
+        <div class="keybox">
+          <div class="keybox-label"><span aria-hidden="true">●</span> Главная мысль</div>
+          <h2>Камни чаще всего не мешают</h2>
+          <p>Большинство людей с камнями в желчном пузыре ничего не чувствуют: их находят случайно на УЗИ и наблюдаются. Лечение нужно при симптомах и осложнениях — и в большинстве случаев это операция.</p>
+          <div class="stats">
+            <div class="stat"><strong>10–20%</strong><span>взрослых имеют камни, в разных популяциях по-разному</span></div>
+            <div class="stat"><strong>до 8 из 10</strong><span>носителей камней не замечают никаких симптомов</span></div>
+          </div>
+          <small class="fine">Это ориентиры по разным популяциям, а не диагностический тест: наличие камня на УЗИ само по себе ещё ничего не значит.</small>
+        </div>
+      </aside>
+    </header>
+
+    <nav class="wrap toc" aria-label="Содержание страницы">
+      <a href="#short">Короткий ответ</a>
+      <a href="#signs">Симптомы</a>
+      <a href="#lookalikes">Похожее, но не желчное</a>
+      <a href="#triggers">Что вызывает приступ</a>
+      <a href="#attack">Во время приступа</a>
+      <a href="#exam">Обследование</a>
+      <a href="#treatment">Лечение</a>
+      <a href="#urgent">Срочно к врачу</a>
+      <a href="#myths">Мифы</a>
+      <a href="#route">План</a>
+      <a href="#diary">Дневник</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section id="short" aria-labelledby="short-title">
+      <div class="takeaway">
+        <div class="takeaway-icon" aria-hidden="true">i</div>
+        <p id="short-title"><strong>Короткий ответ.</strong> Камни в желчном пузыре образуются из желчи, которая застаивается и пересыщается холестерином. Пока камень не перекрывает проток, он может не давать никаких симптомов. Когда перекрывает — возникает <strong>желчная колика</strong>: обычно сильная боль справа под рёбрами или в центре живота, часто после жирной еды, с тошнотой, иногда отдаёт в правую лопатку или спину. Если боль не проходит несколько часов, поднялась температура или появилась желтуха — это уже осложнение (воспаление желчного пузыря, холангит, панкреатит), и здесь нужна врачебная помощь, а не самолечение.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-5">[5]</a></p>
+      </div>
+    </section>
+
+    <section id="signs" aria-labelledby="signs-title">
+      <div class="section-head">
+        <div class="section-no">01 · Уточним симптом</div>
+        <h2 id="signs-title">Желчная болезнь выглядит по-разному</h2>
+        <p class="section-desc">Камни в желчном пузыре и камни в желчных протоках — разные ситуации с разными последствиями. Большинство людей при этом даже не знают, что у них есть камни.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card symptom-card">
+          <div class="card-index">A</div>
+          <h3>Желчная колика</h3>
+          <p>Приступообразная боль справа под рёбрами или в центре живота, обычно после еды. Нарастает за десятки минут, держится от получаса до нескольких часов и проходит, когда камень сдвигается и проток открывается.</p>
+          <span class="small-label">Часто сопровождается тошнотой, отдаёт в правую лопатку</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">B</div>
+          <h3>Воспаление желчного пузыря</h3>
+          <p>Боль становится постоянной и не проходит за несколько часов, появляется жар, озноб, слабость. На УЗИ видно утолщение стенки и жидкость вокруг пузыря.</p>
+          <span class="small-label">Состояние уже не про самостоятельно</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">C</div>
+          <h3>Камень в желчном протоке</h3>
+          <p>Желтуха, тёмная «чайная» моча, светлый или почти белый стул, зуд кожи. Желчь не доходит до кишечника, меняется цвет мочи и стула.</p>
+          <span class="small-label">Здесь нужна оценка врача и часто эндоскопическое вмешательство</span>
+        </article>
+        <article class="card symptom-card">
+          <div class="card-index">D</div>
+          <h3>Желчнокаменный панкреатит</h3>
+          <p>Камень смещается дальше и перекрывает проток поджелудочной железы: резкая опоясывающая боль вверх по животу, упорная рвота, которая не приносит облегчения.</p>
+          <span class="small-label">Повод вызвать скорую, а не ждать до утра</span>
+        </article>
+      </div>
+      <div class="callout">Большинство людей с камнями — так называемые «немые» камни: они не перекрывают протоки и никогда не дают симптомов. Их находят случайно на УЗИ, сделанном по другому поводу, и обычно просто наблюдают.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-7">[7]</a></div>
+    </section>
+
+    <section id="lookalikes" aria-labelledby="lookalikes-title">
+      <div class="section-head">
+        <div class="section-no">02 · Важно не перепутать</div>
+        <h2 id="lookalikes-title">Боль справа под рёбрами ≠ желчный пузырь</h2>
+        <p class="section-desc">Похожие ощущения дают несколько других состояний. Отличить их по ощущениям надёжно нельзя — поэтому диагноз подтверждают УЗИ и анализы, а не самочувствие.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card cause-card">
+          <span class="tag">Часто путают</span>
+          <h3>Гастрит и рефлюкс</h3>
+          <p>Боль под ложечкой, жжение, связь с кислым или острой едой, изжога. Обычно не «в правом боку под ребром», а по центру и выше.</p>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Часто путают</span>
+          <h3>Вздутие и СРК</h3>
+          <p>Боль по краям живота, меняется после дефекации, сопровождается газами и нарушением стула. Желчная колика так не ведёт себя.</p>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Часто путают</span>
+          <h3>Мышечно-скелетная боль</h3>
+          <p>Невралгия, зажатая спина, боль при повороте тела, при нажатии, отдающая в спину. Меняется от позы и нагрузки.</p>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Опасно пропустить</span>
+          <h3>Правая почка</h3>
+          <p>Камень или воспаление почки: боль ниже, ближе к пояснице, отдаёт в пах, сопровождается изменениями мочи и повышением температуры.</p>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Опасно пропустить</span>
+          <h3>Правое лёгкое и плеврит</h3>
+          <p>Боль сбоку, усиливается на вдохе, сопровождается кашлем и одышкой, иногда повышением температуры.</p>
+        </article>
+        <article class="card cause-card">
+          <span class="tag">Опасно пропустить</span>
+          <h3>Панкреатит и аппендицит</h3>
+          <p>Опоясывающая боль с рвотой или боль внизу живота с переносом. При них тактика совсем другая — и требует срочной оценки.</p>
+        </article>
+      </div>
+      <div class="callout">Отсюда правило: при боли справа под рёбрами, которая повторяется, первым делом стоит сделать УЗИ, а не подбирать себе травы. Камни — самая частая и самая легко подтверждаемая причина такой боли, но не единственная.<a class="cite" href="#src-4">[4]</a><a class="cite" href="#src-6">[6]</a></div>
+    </section>
+
+    <section id="triggers" aria-labelledby="triggers-title">
+      <div class="section-head">
+        <div class="section-no">03 · Провокаторы и риски</div>
+        <h2 id="triggers-title">Что запускает приступ и у кого он вероятнее</h2>
+        <p class="section-desc">Механизм простой: после еды пузырь сокращается и выдавливает желчь, густой камень перекрывает выход, и возникает спазм и боль. Поэтому приступ так часто приходит именно после еды.</p>
+      </div>
+      <div class="two-col-note">
+        <div class="mini-panel">
+          <h3>Что чаще всего провоцирует приступ</h3>
+          <ul>
+            <li>жирная, жареная пища: масло, сливочное масло, свинина, сало, сыр, сметана;</li>
+            <li>большая порция и особенно обильный ужин;</li>
+            <li>длительный перерыв в еде, а затем плотная еда;</li>
+            <li>резкое снижение веса и низкожировые диеты — желчь становится более концентрированной;</li>
+            <li>дни после операций, поездок и любых перемен в питании.</li>
+          </ul>
+        </div>
+        <div class="mini-panel">
+          <h3>Кто в группе риска</h3>
+          <ul>
+            <li>женщины, особенно 40 лет и старше;</li>
+            <li>избыточный вес и малоподвижный образ жизни;</li>
+            <li>беременность и её гормональный фон;</li>
+            <li>стремительное похудение, бариатрические операции, питание через зонд;</li>
+            <li>семейная предрасположенность, сахарный диабет;</li>
+            <li>эстрогенсодержащие препараты (противозачаточные, заместительная терапия);</li>
+            <li>заболевания крови, разрушающие эритроциты.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="notice info">
+        <p><strong>Про холестерин из еды.</strong> Камни образуются из желчи, а не из холестерина, который попал с пищей: пищевой холестерин у большинства людей влияет на образование камней слабо. Гораздо важнее состояние желчи, застой в пузыре и гормональный фон — поэтому камни встречаются и у людей, которые не едят жирного, и не бывают у тех, кто ест его много.<a class="cite" href="#src-1">[1]</a><a class="cite" href="#src-3">[3]</a></p>
+      </div>
+    </section>
+
+    <section id="attack" aria-labelledby="attack-title">
+      <div class="section-head">
+        <div class="section-no">04 · Во время приступа</div>
+        <h2 id="attack-title">Что делать, если приступ уже начался</h2>
+        <p class="section-desc">Задача первого дня — не допустить осложнений, снять спазм и собрать информацию для врача. Лечение приступа не убирает камни, оно помогает пережить боль.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Снять нагрузку</h3>
+          <p>Прекратить еду на несколько часов, пить воду маленькими глотками и не наедаться при первом улучшении: большая порция снова вызывает сокращение пузыря.</p>
+        </div>
+        <div class="step">
+          <h3>Облегчить боль</h3>
+          <p>Покой, тёплый душ или грелка на правое подреберье. Обезболивающее и спазмолитик — только по назначению врача и с учётом противопоказаний.</p>
+        </div>
+        <div class="step">
+          <h3>Записать подробности</h3>
+          <p>Что съели и во сколько, когда началась боль, куда отдаёт, была ли тошнота и повышалась ли температура. Этот дневник врачу полезнее любых пересказов.</p>
+        </div>
+      </div>
+      <div class="notice warning">
+        <p><strong>Желчегонные травы и БАДы во время приступа не помогают.</strong> «Укроп», «кукурузные рыльца», препараты желчегонного ряда и «сборы для печени» в разгар колики могут усилить спазм и спровоцировать переход камня в проток. То же касается жирной еды «чтобы заработать желчный пузырь» — в приступе всё наоборот.</p>
+      </div>
+      <div class="notice danger">
+        <p><strong>Желтуха, жар или боль, длящаяся дольше 4–6 часов, — повод вызвать скорую.</strong> До этого момента приступ может пройти сам, а вот воспаление пузыря, холангит или панкреатит не проходят и требуют стационарной помощи.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-4">[4]</a></p>
+      </div>
+    </section>
+
+    <section id="exam" aria-labelledby="exam-title">
+      <div class="section-head">
+        <div class="section-no">05 · Обследование</div>
+        <h2 id="exam-title">Что стоит сделать</h2>
+        <p class="section-desc">Диагностика желчнокаменной болезни проста: в большинстве случаев достаточно УЗИ и пары анализов крови. Сложные методы нужны только в неясных ситуациях.</p>
+      </div>
+      <div class="test-list">
+        <div class="test-row">
+          <strong>УЗИ органов брюшной полости</strong>
+          <p>Первый и основной метод: видны камни, их количество и размер, утолщение стенки, жидкость вокруг пузыря, расширение протоков. Исследование делают натощак, обычно утром натощак.</p>
+        </div>
+        <div class="test-row">
+          <strong>Биохимия крови</strong>
+          <p>Билирубин, АЛТ и АСТ, щелочная фосфатаза и ГГТ, амилаза или липаза, общий анализ крови. Показывают, есть ли воспаление и застой желчи.</p>
+        </div>
+        <div class="test-row">
+          <strong>МРТ или МРХ (MRCP)</strong>
+          <p>Показывает камни в протоках точнее УЗИ. Назначается, если ультразвук неинформативен или есть подозрение на камень в желчном протоке.</p>
+        </div>
+        <div class="test-row">
+          <strong>КТ</strong>
+          <p>Помогает в спорных случаях и при осложнениях, когда нужно оценить воспаление и состояние окружающих органов.</p>
+        </div>
+        <div class="test-row">
+          <strong>ФГДГ с ЭРХПГ</strong>
+          <p>Если камень уже в общем желчном протоке, его извлекают эндоскопически. Это одновременно обследование и лечение — без разреза.</p>
+        </div>
+        <div class="test-row">
+          <strong>Сцинтиграфия (ХИДА)</strong>
+          <p>Используется редко, когда нужно понять, проходит ли желчь и работает ли пузырь.</p>
+        </div>
+      </div>
+      <div class="callout">УЗИ находит «немые» камни у очень многих людей, и они никогда не дадут симптомов. Поэтому наличие камня в описании — не причина для тревоги и не самостоятельное показание к операции: решение принимают вместе с врачом, когда есть клиническая картина.<a class="cite" href="#src-2">[2]</a><a class="cite" href="#src-5">[5]</a></div>
+    </section>
+
+    <section id="treatment" aria-labelledby="treatment-title">
+      <div class="section-head">
+        <div class="section-no">06 · Лечение</div>
+        <h2 id="treatment-title">Что помогает, а что нет</h2>
+        <p class="section-desc">Главный факт, который стоит принять заранее: надёжного лечения желчнокаменной болезни без удаления желчного пузыря не существует, а безопасных таблеток, растворяющих камни, нет.</p>
+      </div>
+      <div class="treatment-intro">
+        <p><strong>Стандарт при симптоматической болезни — лапароскопическая холецистэктомия.</strong> Операция убирает орган, в котором камни образуются, и снимает риск приступов и осложнений. Она выполняется через небольшие проколы, обычно под общим наркозом, большинство пациентов возвращаются к обычной жизни через несколько дней.</p>
+        <span class="evidence-stamp">Основной метод</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Что предлагают</th><th>Что это значит на практике</th><th>Доказательность</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Операция — удаление желчного пузыря</td><td>Единственный способ гарантированно избавиться от приступов и риска осложнений при симптомной болезни.</td><td><span class="evidence">Стандарт</span></td></tr>
+            <tr><td>Наблюдение при бессимптомных камнях</td><td>Большинство «немых» камней не требуют лечения: их контролируют и при необходимости повторяют УЗИ.</td><td><span class="evidence">Рекомендуется</span></td></tr>
+            <tr><td>УДХК (урсодезоксихолевая кислота)</td><td>Растворяет только мелкие холестериновые камни и не всем подходит. Применяется по назначению врача в отобранных случаях.</td><td><span class="evidence limited">Ограниченно</span></td></tr>
+            <tr><td>ЭРХПГ</td><td>Извлечение камня из желчного протока эндоскопически, если он там застрял.</td><td><span class="evidence">При показаниях</span></td></tr>
+            <tr><td>Диета с ограничением жира</td><td>Уменьшает частоту приступов, но камни не растворяет и причину болезни не устраняет.</td><td><span class="evidence limited">Ограниченно</span></td></tr>
+            <tr><td>Травы, БАДы, «очищение» желчного</td><td>Не растворяют камни и не влияют на риск приступов. Травами в обострение можно навредить.</td><td><span class="evidence avoid">Не работает</span></td></tr>
+            <tr><td>«Таблетки, растворяющие камни»</td><td>Такого лекарства для обычного пациента не существует.</td><td><span class="evidence avoid">Не работает</span></td></tr>
+          </tbody>
+        </table>
+        <p class="table-note">Про УДХК: она действительно растворяет некоторые камни, но только мелкие и холестериновые, у ограниченной группы пациентов, под контролем врача и с регулярной проверкой. Это не альтернатива операции в большинстве случаев.<a class="cite" href="#src-5">[5]</a></p>
+      </div>
+      <div class="notice info">
+        <p><strong>Про жизнь после операции.</strong> Удалённый пузырь не мешает переваривать жир: после операции большинство людей нормально переносят привычную еду. Ограничения нужны в первые недели, а не десятилетиями. Если после операции появились боли, вздутие или непереносимость продуктов — это отдельная задача для гастроэнтеролога, а не «признак того, что операция была лишней».<a class="cite" href="#src-2">[2]</a><a class="cite" href="#src-8">[8]</a></p>
+      </div>
+    </section>
+
+    <section id="myths" aria-labelledby="myths-title">
+      <div class="section-head">
+        <div class="section-no">07 · Мифы</div>
+        <h2 id="myths-title">Что обычно не стоит делать самостоятельно</h2>
+        <p class="section-desc">Эти советы чаще всего приводят к потере времени: симптомы, которые можно было бы уточнить на УЗИ, лечатся травами неделями.</p>
+      </div>
+      <div class="myth-list">
+        <div class="myth"><span class="myth-mark">✕</span><span>«Растворить камни укропом, кукурузными рыльцами или минеральной водой». Препараты желчегонного ряда не растворяют камни и во время приступа способны навредить.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«Очистить печень и желчный». Желчь и так обновляется сама; попытки «очищения» не имеют отношения к камням.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«Жирное — главная причина камней». Жирная пища провоцирует приступ у человека с камнями, но не создаёт их: ключевые факторы — состав желчи, застой и гормоны.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«Камень один — значит, ерунда». Именно одиночные крупные камни чаще всего вызывают приступ, застревая в шейке пузыря или протоке.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«Раз болит — надо выпить желчегонное». В разгар колики это противопоказано: задача — снять спазм, а не усилить отток желчи.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«После операции жирное нельзя никогда». Большинство после удаления пузыря живут без ограничений; длительная «жировая диета» им не нужна.</span></div>
+        <div class="myth"><span class="myth-mark">✕</span><span>«Раз камни нашли на УЗИ — сразу оперировать». При бессимптомных камнях у большинства показаний к операции нет; решение зависит от симптомов и факторов риска.</span></div>
+      </div>
+    </section>
+
+    <section id="urgent" aria-labelledby="urgent-title">
+      <div class="section-head">
+        <div class="section-no">08 · Срочность</div>
+        <h2 id="urgent-title">Когда нужна срочная медицинская помощь</h2>
+        <p class="section-desc">Осложнения желчнокаменной болезни развиваются быстро, и промедление опасно. Ниже — признаки, при которых не стоит ждать записи к врачу.</p>
+      </div>
+      <div class="warning-grid">
+        <div class="warning-card urgent">
+          <h3>⛑ Вызвать скорую</h3>
+          <ul>
+            <li>боль справа или в центре живота не проходит дольше 4–6 часов и нарастает;</li>
+            <li>температура 38 °C и выше, озноб, слабость;</li>
+            <li>желтушность кожи и белков глаз;</li>
+            <li>тёмная «чайная» моча и светлый, почти белый стул;</li>
+            <li>боль с рвотой, отдающая в спину;</li>
+            <li>настолько сильная боль, что невозможно найти удобное положение.</li>
+          </ul>
+          <p>Сочетание «боль + жар + желтуха» — это подозрение на воспаление желчных протоков, и здесь счёт идёт на часы.<a class="cite" href="#src-3">[3]</a><a class="cite" href="#src-4">[4]</a></p>
+        </div>
+        <div class="warning-card soon">
+          <h3>⏱ Запланировать приём</h3>
+          <ul>
+            <li>приступы повторяются и каждый раз связаны с едой;</li>
+            <li>боль справа под рёбрами возникает регулярно, даже неяркая;</li>
+            <li>на УЗИ уже находили камни и появились симптомы;</li>
+            <li>изменился аппетит, появилась неприязнь к жирной пище, снизился вес;</li>
+            <li>первые эпизоды появились после 50 лет.</li>
+          </ul>
+          <p>Плановый визит к гастроэнтерологу или хирургу с дневником приступов и УЗИ — самый разумный шаг.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="route" aria-labelledby="route-title">
+      <div class="section-head">
+        <div class="section-no">09 · План</div>
+        <h2 id="route-title">С чего начать</h2>
+        <p class="section-desc">Простой маршрут, который экономит время и деньги: записать приступ, показать записи врачу, сделать УЗИ и обсудить тактику.</p>
+      </div>
+      <div class="route">
+        <div class="route-item">
+          <div class="route-day">Шаг 1 · записывать</div>
+          <h3>Дневник приступов</h3>
+          <p>Что съели, во сколько, когда началась боль, куда отдаёт, была ли тошнота, жар, желтуха. В приложении есть раздел «Желчный» — он ведёт такие записи автоматически.</p>
+        </div>
+        <div class="route-item">
+          <div class="route-day">Шаг 2 · показать</div>
+          <h3>Приём у врача</h3>
+          <p>Гастроэнтеролог или хирург смотрит не только на жалобы, но и на их повторяемость. Дневник заменяет несколько уточняющих вопросов и делает тактику понятнее.</p>
+        </div>
+        <div class="route-item">
+          <div class="route-day">Шаг 3 · проверить</div>
+          <h3>УЗИ и анализы</h3>
+          <p>УЗИ подтверждает или снимает вопрос о камнях, биохимия показывает, есть ли воспаление и застой желчи. Дальше становится ясно, наблюдение это или операция.</p>
+        </div>
+        <div class="route-item">
+          <div class="route-day">Шаг 4 · решить</div>
+          <h3>Тактика</h3>
+          <p>При типичных приступах подтверждённая желчнокаменная болезнь обычно решается операцией. При «немых» камнях без симптомов чаще всего достаточно наблюдения.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="diary" aria-labelledby="diary-title">
+      <div class="section-head">
+        <div class="section-no">10 · Дневник</div>
+        <h2 id="diary-title">Что именно стоит записывать</h2>
+        <p class="section-desc">Желчная колика почти всегда привязана к еде, поэтому в дневнике важнее всего связка «что съел → когда началась боль».</p>
+      </div>
+      <div class="grid-2">
+        <div class="mini-panel">
+          <h3>Обязательно</h3>
+          <ul>
+            <li>время приёма пищи и что именно съели — продукты по отдельности, через запятую;</li>
+            <li>время начала боли и её сила;</li>
+            <li>куда отдаёт: правое подреберье, центр живота, правая лопатка, спина;</li>
+            <li>тошнота, рвота, жар, желтушность, изменение цвета мочи и стула;</li>
+            <li>чем закончилось: прошло само, помогло ли что-то, сколько длилось.</li>
+          </ul>
+        </div>
+        <div class="mini-panel">
+          <h3>Как это делает приложение</h3>
+          <ul>
+            <li>раздел «Запись» → вкладка «Желчный»: боль справа, тошнота, вздутие, отметки «после еды», «после жирной пищи», «желтуха или жар»;</li>
+            <li>контрольные отметки — периоды без симптомов, чтобы сравнивать с приступами;</li>
+            <li>на экране «Анализ» — какие продукты встречались в записях о еде за 6 часов до приступа, а какие — в контрольные периоды;</li>
+            <li>экспорт CSV — чтобы отдать врачу или сохранить копию.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">Окно в 6 часов и порог 4/10 — технические настройки дневника, а не медицинские нормативы. Совпадения в анализе показывают частоту совместных записей, а не причину: один и тот же продукт может попасть в запись и случайно.<a class="cite" href="#src-9">[9]</a></div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <div class="section-no">11 · Частые вопросы</div>
+        <h2 id="faq-title">Что спрашивают чаще всего</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Можно ли есть жирное, если есть камни?</summary>
+          <p>Диета с резким ограничением жира не растворяет камни и не является лечением. Питание в период ремиссии обычно обсуждают с врачом; во время приступа разумно не наедаться и не есть тяжёлую пищу. Многие люди с камнями едят привычную еду и не страдают, а приступы провоцируют лишь отдельные ситуации — большая порция и долгий перерыв в еде.</p>
+        </details>
+        <details>
+          <summary>Нужно ли удалять желчный, если камни не беспокоят?</summary>
+          <p>При бессимптомных камнях у большинства людей операция не показана: риск осложнений невелик, а операция сама по себе имеет риски. Решение обсуждается с врачом и зависит от факторов риска, возраста и сопутствующих заболеваний.</p>
+        </details>
+        <details>
+          <summary>Можно ли вылечить камни таблетками?</summary>
+          <p>Единственный препарат, способный частично растворять камни, — урсодезоксихолевая кислота, и только у ограниченной группы пациентов с мелкими холестериновыми камнями. Это не «таблетка от камней» и не альтернатива операции в большинстве случаев. Никакие травы, БАДы и «очищающие» средства камни не растворяют.</p>
+        </details>
+        <details>
+          <summary>Как отличить желчную боль от гастрита?</summary>
+          <p>По ощущениям — ненадёжно. Желчная колика чаще бывает резкой, нарастает за десятки минут, длится от получаса до нескольких часов, локализуется справа под рёбрами или в центре живота, иногда отдаёт в правую лопатку, часто сопровождается тошнотой. Гастрит чаще связан с конкретной едой, жжением и изжогой. Но подтвердить или исключить камни может только УЗИ.</p>
+        </details>
+        <details>
+          <summary>Что делать, если приступ случился ночью или в поездке?</summary>
+          <p>Покой, тепло, не наедаться, пить воду маленькими глотками, обезболивающее по назначению врача. Если появились жар, желтуха, рвота или боль не проходит — нужна срочная помощь, в том числе вне страны. Заранее полезно знать, где ближайшая клиника и что именно вы записываете в дневник: врачу это сильно помогает.</p>
+        </details>
+        <details>
+          <summary>Нужно ли делать УЗИ, если болит справа?</summary>
+          <p>Да, УЗИ — простой, безопасный и информативный первый шаг при повторяющейся боли справа под рёбрами. Именно он покажет камни, воспаление и расширение протоков, а биохимия крови уточнит, есть ли застой желчи.</p>
+        </details>
+        <details>
+          <summary>Камни и беременность — это опасно?</summary>
+          <p>Во время беременности риск образования камней выше из-за гормональных изменений, и тактика подбирается индивидуально: врачи оценивают, нужна ли операция и когда. В острой ситуации тактику определяет хирург совместно с гинекологом и гастроэнтерологом.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="sources" aria-labelledby="sources-title">
+      <div class="section-head">
+        <div class="section-no">12 · Источники</div>
+        <h2 id="sources-title">На чём основана памятка</h2>
+        <p class="section-desc">Материалы, на которые опираются формулировки: клинические рекомендации, страницы профильных организаций и справочники для врачей.</p>
+      </div>
+      <div class="sources">
+        <ol>
+          <li id="src-1"><span class="source-title">Mayo Clinic. Gallstones: Symptoms and causes.</span><span class="source-meta"><a href="https://www.mayoclinic.org/diseases-conditions/gallstones/symptoms-causes/syc-20354214" target="_blank" rel="noopener noreferrer">Открыть страницу Mayo Clinic</a> · как выглядит желчная колика, факторы риска, осложнения.</span></li>
+          <li id="src-2"><span class="source-title">Mayo Clinic. Gallstones: Diagnosis and treatment.</span><span class="source-meta"><a href="https://www.mayoclinic.org/diseases-conditions/gallstones/diagnosis-treatment/drc-20354220" target="_blank" rel="noopener noreferrer">Открыть страницу Mayo Clinic</a> · УЗИ, наблюдение, операция, что происходит после удаления пузыря.</span></li>
+          <li id="src-3"><span class="source-title">National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK). Gallstones: Symptoms &amp; Causes.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/symptoms-causes" target="_blank" rel="noopener noreferrer">Открыть материал NIDDK</a> · «тихие» камни, признаки осложнений, когда нужна срочная помощь.</span></li>
+          <li id="src-4"><span class="source-title">NHS. Gallstones.</span><span class="source-meta"><a href="https://www.nhs.uk/conditions/gallstones/" target="_blank" rel="noopener noreferrer">Открыть страницу NHS</a> · симптомы желчной колики и список состояний, требующих срочного вызова помощи.</span></li>
+          <li id="src-5"><span class="source-title">European Association for the Study of the Liver (EASL). Clinical Practice Guidelines on the prevention, diagnosis and treatment of gallstones. Journal of Hepatology. 2016;65(1):146–181.</span><span class="source-meta"><a href="https://doi.org/10.1016/j.jhep.2016.03.005" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.jhep.2016.03.005</a> · профилактика, диагностика, тактика при желчнокаменной болезни, показания к операции и место УДХК.</span></li>
+          <li id="src-6"><span class="source-title">Merck Manual Professional Edition. Cholelithiasis.</span><span class="source-meta"><a href="https://www.merckmanuals.com/professional/hepatic-and-biliary-disorders/gallbladder-and-bile-duct-disorders/cholelithiasis" target="_blank" rel="noopener noreferrer">Открыть материал Merck Manual</a> · патофизиология, классификация камней, дифференциальная диагностика.</span></li>
+          <li id="src-7"><span class="source-title">NIDDK. Gallstones: Definition &amp; Facts.</span><span class="source-meta"><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones/definition-facts" target="_blank" rel="noopener noreferrer">Открыть материал NIDDK</a> · что такое желчнокаменная болезнь, «тихие» камни, осложнения.</span></li>
+          <li id="src-8"><span class="source-title">Johns Hopkins Medicine. Gallstones.</span><span class="source-meta"><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/gallstones" target="_blank" rel="noopener noreferrer">Открыть страницу Johns Hopkins Medicine</a> · симптомы, факторы риска, наблюдение и лечение.</span></li>
+          <li id="src-9"><span class="source-title">Harvard Health. What to do about gallstones.</span><span class="source-meta"><a href="https://www.health.harvard.edu/digestive-health/what-to-do-about-gallstones" target="_blank" rel="noopener noreferrer">Открыть материал Harvard Health</a> · механизм приступа, роль жирной пищи, тактика и наблюдение.</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="footer-inner">
+      <p>Информационный материал для взрослых. Он не ставит диагноз и не заменяет очную консультацию. При боли справа под рёбрами, желтухе, повышении температуры или рвоте обращайтесь за медицинской помощью — при желтухе с жаром и сильной болью это нужно сделать сразу.</p>
+      <a class="backtop" href="#top">↑ Наверх</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+name: Сборка
+
+# Автосборка после каждого изменения в репозитории.
+# Результат: подписанный release-APK в артефактах сборки.
+on:
+  push:
+    branches:
+      - main
+      - 'arena/**'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Сборка APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Получить исходники
+        uses: actions/checkout@v7
+
+      - name: Подготовить Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Подготовить Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+
+      - name: Проверить состав SDK
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=${ANDROID_HOME:-не задан}"
+          ls "${ANDROID_HOME}/platforms" || echo "::error::нет platforms/android-35"
+          ls "${ANDROID_HOME}/build-tools" || echo "::error::нет build-tools/35.0.0"
+          test -d "${ANDROID_HOME}/platforms/android-35" || { echo "::error::не установлен platform android-35"; exit 1; }
+          test -d "${ANDROID_HOME}/build-tools/35.0.0" || { echo "::error::не установлен build-tools 35.0.0"; exit 1; }
+
+      - name: Собрать release
+        run: ./gradlew --no-daemon --stacktrace assembleRelease
+
+      - name: Собрать debug
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Модульные тесты
+        run: ./gradlew --no-daemon test
+
+      - name: Проверить содержимое APK
+        run: |
+          chmod +x .github/scripts/inspect-apk.sh
+          .github/scripts/inspect-apk.sh $(ls app/build/outputs/apk/release/*.apk | head -1)
+
+      - name: Проверить подпись постоянным ключом
+        run: |
+          chmod +x .github/scripts/verify-signature.sh
+          .github/scripts/verify-signature.sh $(ls app/build/outputs/apk/release/*.apk | head -1)
+
+      - name: Отчёт о линте
+        if: always()
+        run: |
+          ./gradlew --no-daemon lintRelease || true
+          REPORT=app/build/reports/lint-results-release.txt
+          {
+            echo "### Отчёт о линте"
+            echo ""
+            if [ -f "$REPORT" ]; then
+              sed -n '1,120p' "$REPORT"
+            else
+              echo "Отчёт не найден"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "$REPORT" ]; then
+            grep -E "Error:|Warning:" "$REPORT" | head -30 | while IFS= read -r line; do
+              echo "::warning::lint — $line"
+            done
+          fi
+
+      - name: Сохранить APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: food-diary-apk
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
