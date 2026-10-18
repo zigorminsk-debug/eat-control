@@ -8,13 +8,16 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebViewTransport;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,6 +87,7 @@ public class HelpArticleActivity extends Activity {
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.setWebViewClient(new HelpWebViewClient());
+        webView.setWebChromeClient(new HelpChromeClient());
         root.addView(webView);
 
         if (savedInstanceState != null) {
@@ -147,19 +151,59 @@ public class HelpArticleActivity extends Activity {
     private boolean handleUrl(Uri uri) {
         String scheme = uri.getScheme();
         if ("http".equals(scheme) || "https".equals(scheme)) {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(this, "Нет приложения для открытия ссылки", Toast.LENGTH_LONG).show();
-            }
+            openExternal(uri);
             return true;
         }
         if ("file".equals(scheme)) {
             return false;
         }
         return true;
+    }
+
+    /** Открывает внешнюю ссылку в системном браузере. */
+    private void openExternal(Uri uri) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "Нет приложения для открытия ссылки", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Ссылки в справочных страницах помечены target="_blank". Без этого
+     * обработчика WebView не знает, куда их открывать, и переход молча
+     * игнорируется — поэтому такие ссылки уводим в системный браузер.
+     */
+    private class HelpChromeClient extends WebChromeClient {
+        @Override
+        public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture,
+                                     Message resultMsg) {
+            WebViewTransport transport = (WebViewTransport) resultMsg.obj;
+            if (transport == null) return false;
+
+            WebView probe = new WebView(HelpArticleActivity.this);
+            probe.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request) {
+                    if (request != null && request.getUrl() != null) {
+                        openExternal(request.getUrl());
+                    }
+                    return true;
+                }
+
+                @SuppressWarnings("deprecation")
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView v, String url) {
+                    if (url != null) openExternal(Uri.parse(url));
+                    return true;
+                }
+            });
+            transport.setWebView(probe);
+            resultMsg.sendToTarget();
+            return true;
+        }
     }
 
     @Override

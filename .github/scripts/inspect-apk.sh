@@ -23,10 +23,12 @@ fi
 echo "--- состав APK ---"
 unzip -l "$APK" | grep -E "assets/|\.dex|META-INF/.*\.(RSA|SF|MF)" || true
 
-if ! unzip -l "$APK" | grep -q "assets/help/gazy-i-vzdutie.html"; then
-  echo "::error::страница справки не попала в assets APK"
-  exit 1
-fi
+for help_page in "assets/help/gazy-i-vzdutie.html" "assets/help/kamen-v-zhelchnom-puzyre.html"; do
+  if ! unzip -l "$APK" | grep -q "$help_page"; then
+    echo "::error::справочная страница $help_page не попала в assets APK"
+    exit 1
+  fi
+done
 if ! unzip -l "$APK" | grep -q "classes.dex"; then
   echo "::error::в APK нет classes.dex"
   exit 1
