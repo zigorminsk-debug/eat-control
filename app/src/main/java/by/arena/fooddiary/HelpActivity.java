@@ -179,7 +179,7 @@ public class HelpActivity extends Activity {
         return b;
     }
 
-    private void gap(LinearLayout parent, int dpValue) {
+    private void addGap(LinearLayout parent, int dpValue) {
         View gap = new View(this);
         parent.addView(gap, new LinearLayout.LayoutParams(1, dp(dpValue)));
     }
