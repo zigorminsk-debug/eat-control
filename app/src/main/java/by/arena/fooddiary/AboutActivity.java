@@ -65,8 +65,9 @@ public class AboutActivity extends Activity {
         LinearLayout help = card();
         addText(help, "Помощь", 16, GREEN_DARK, true);
         gap(help, 5);
-        addText(help, "Справочная страница «Газы и вздутие: причины, обследование и лечение» "
-                + "доступна внутри приложения и работает без интернета.", 12, Color.rgb(55, 89, 82), false);
+        addText(help, "Внутри приложения есть справочные страницы «Газы и вздутие» и «Камни в желчном "
+                + "пузыре: симптомы, обследование и лечение». Они открываются без интернета.", 12,
+                Color.rgb(55, 89, 82), false);
         gap(help, 11);
         TextView helpButton = button("Открыть справку", GREEN, Color.WHITE, false);
         help.addView(helpButton, new LinearLayout.LayoutParams(

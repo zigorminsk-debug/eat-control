@@ -42,6 +42,12 @@
             android:label="Помощь"
             android:parentActivityName=".MainActivity" />
 
+        <activity
+            android:name=".HelpArticleActivity"
+            android:exported="false"
+            android:label="Справочная страница"
+            android:parentActivityName=".HelpActivity" />
+
         <!-- Отдаёт системному установщику только что скачанный APK. -->
         <provider
             android:name=".ApkProvider"
