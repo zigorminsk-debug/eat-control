@@ -17,7 +17,6 @@ import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebViewTransport;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -180,7 +179,7 @@ public class HelpArticleActivity extends Activity {
         @Override
         public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture,
                                      Message resultMsg) {
-            WebViewTransport transport = (WebViewTransport) resultMsg.obj;
+            WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
             if (transport == null) return false;
 
             WebView probe = new WebView(HelpArticleActivity.this);
